@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="treestyles.css" type="text/css"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!--This file has been created with toxhtml.xsl--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><title>12.1.2 改变线程EIP注入</title><link rel="stylesheet" href="12.1.2a.html_files/treestyles.css" type="text/css"/><script type="text/javascript" src="12.1.2a.html_files/marktree.js"> 
+	</script></head><body><div class="basetop"><a href="#" onclick="expandAll(document.getElementById('base'))">Expand</a> -
+<a href="#" onclick="collapseAll(document.getElementById('base'))">Collapse</a></div><div id="base" class="basetext"><ul>
+	<li class="col" id="FMID_353050944FM"><div class="nodecontent">12.1.2 改变线程EIP注入</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1506662217FM"><div class="nodecontent">1.CreatRemoteThread</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_995158956FM"><div class="nodecontent">[test pass] </div></li>
+	<li class="basic" id="FMID_1775936511FM"><div class="nodecontent"><p>
+      原理:
+    </p><p>
+      1.在目标进程中申请内存，并向其中写入dll路径
+    </p><p>
+      2.然后调用CreatRemoteThread ,在目标进程中创建线程，线程函数的地址写 LoadLibrarA(W),参数为步骤1中dll的路径存放内存指针
+    </p><p/><p>
+      PS:
+    </p><p>
+      要求拥有目标进程的4个权限:
+    </p><p>
+      PROCESS_CREATE_THREAD
+    </p><p>
+      PROCESS_QUERY_INFORMATION
+    </p><p>
+      PROCESS_VM_OPERATION
+    </p><p>
+      PROCESS_VM_WRITE
+    </p><p>
+      win7及其以上版本要求更多的权限
+    </p><p>
+      问题:
+    </p><p>
+      Vista以上版本增加了会话(Session)隔离，调用CreateRemoteThread时对会话进程检查，不再统一会话会调用CsrClientCallServer 登记新线程失败，但是这个过程在KernelBase.dll中进行，可以使用Shellcode将其Patch掉。
+    </p><p>
+      但即使如此，如果涉及需要CSRSS子系统支持操作，其创建和执行就会失败。
+    </p></div></li></ul></li>
+	<li class="col" id="FMID_827829246FM"><div class="nodecontent">2.RtlCreateUserThread</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_323299943FM"><div class="nodecontent">[test fail] -- 这个好奇怪原始代码编译运行也不行</div></li>
+	<li class="col" id="FMID_1711353485FM"><div class="nodecontent"><p>
+      原理:
+    </p><p>
+      RtlCreateUserThread
+    </p><p>
+      ntdll中Rtl执行体的一部分，与CreateRemoteThread类似,最终都是用NtCreateThreadEx 来创建线程实体。
+    </p><p>
+      但它一般用来创建特殊线程
+    </p><p>
+      （eg： Native 程序的smss.exe 用其来创建监听线程，
+    </p><p>
+                   以及在调试器附加到进程时创建DbgUiRemoteBreakin线程）
+    </p><p>
+      所以不需要经过csrss的验证登记。
+    </p><p><b><u><font color="#cc0000">diff:  </font></u></b>与CreateRemoteThread不同的是，使用RtlCreateUserThread创建的线程需要自己结束自己
+    </p></div>
+		<ul class="subexp">
+	<li class="col" id="FMID_206422228FM"><div class="nodecontent">PS:</div>
+		<ul class="subexp">
+	<li class="exp" id="FMID_431188660FM"><div class="nodecontent"><p>
+      native程序介绍:
+    </p></div>
+		<ul class="sub">
+	<li class="basic" id="FMID_1623710783FM"><div class="nodecontent"><p>
+      https://www.cnblogs.com/BoyXiao/archive/2011/09/21/2183059.html
+    </p><p>
+      在一开始的 Windows NT 内核中是支持三个环境子系统的，即 POSIX,WINDOWS,OS/2，这些子系统属于同一层，它们共用了 Windows NT 所提供的 API，
+    </p><p>
+      即每一个子系统中的 API 的调用都会转换到下一层的相同调用上，
+    </p><p>
+      在 Windows 环境子系统(有 Windows,Posix,OS/2)中的程序，
+    </p><p>
+      都会调用其相对于的子系统下的 API，比如 Windows 子系统中的程序有可能会调用 Win32 API CreateProcess，
+    </p><p/><p>
+      而 Posix 子系统中的程序也有可能会调用 Posix API CreateProcess(当然有可能在 POSIX 下创建进程不是这个名称)，
+    </p><p>
+      但是终归来说，这两个 CreateProcess 的调用都会转换到 Ntdll.dll 中的 NtCreateProcess 中，
+    </p><p>
+      也就是上面的三个子系统最后的调用都会回归到 ntdll.dll 上，
+    </p><p>
+      而我们的 Native Application 则是绕过 Windows 子系统，
+    </p><p>
+      直接自己调用 Native API，比如创建进程的话，我就不再通过子系统中的神马 CreateProcess 来完成了，
+    </p><p>
+      而是直接在程序中调用 ntdll.dll 中的 Native API NtCreateProcess 来完成，
+    </p><p>
+      而这类程序即称之为 Native Application !
+    </p><p>
+                
+    </p><p/><p>
+      Native Application 的运行环境：
+    </p><p>
+      上面也说了，Native Application 是只能够访问 ntdll.dll 中的内容的，
+    </p><p>
+      而如果是在子系统下运行一个程序的话，必然会加载其他的 DLL，
+    </p><p>
+      比如在 Windows 子系统下一个 kernel32.dll 是必不可少的吧，
+    </p><p>
+      如果 Native Application 能够运行在 Windows 子系统下的话，必然也会加载到 Kernel32.dll，
+    </p><p>
+      这样不就和上面相违背了嘛 ~
+    </p><p>
+      总之：Native Application 是不能够运行在任何子系统下的 !
+    </p></div></li></ul></li>
+	<li class="exp" id="FMID_1470723833FM"><div class="nodecontent">smss.exe与native的启动时机</div>
+		<ul class="sub">
+	<li class="basic" id="FMID_1649244728FM"><div class="nodecontent"><p>
+      Native Application 的启动时机：
+    </p><p>
+      对于 Windows 操作系统的引导过程，这里需要带一笔的，Windows 操作系统启动时，
+    </p><p>
+      当 Windows 内核的引导完成以后，就会启动会话管理器 smss.exe 进程了，
+    </p><p>
+      smss.exe 进程虽然是一个用户模式的进程，但是这个进程相对于其他用户模式进程是具有一定特殊性的，
+    </p><p>
+      首先 smss.exe 进程是直接建立在 Windows NT 内核上的，其不依赖于任何一个环境子系统，
+    </p><p>
+      至于不依赖于任何一个环境子系统这一说的话，还是可以很好的解释的，
+    </p><p>
+      因为当环境子系统进程(Windows 子系统进程为 csrss.exe)就是由 smss.exe 进程启动的，
+    </p><p>
+      然后 smss.exe 是 Windows 操作系统启动的第一个用户态进程，
+    </p><p>
+      而 Native Application 也属于用户态程序，自然 Native Application 的启动是在 smss.exe 之后，
+    </p><p>
+      而后前面也说过，Native Application 运行时，子系统进程还尚未启动，
+    </p><p>
+      所以 Native Application 的启动则是在 csrss.exe 之前的，
+    </p><p>
+      而话又说回来，csrss.exe 就是由会话管理器(smss.exe)启动的，
+    </p><p>
+      所以 Native Application 的启动时机也就只有一种可能了，
+    </p><p/><p>
+      即 smss.exe 先启动 Native Application，然后 Native Application 开始执行，
+    </p><p>
+      等到 Native Application 都给执行完了后 smss.exe 再启动 csrss.exe 进程。
+    </p><p>
+      （事实上，Win32 应用程序环境子系统 csrss.exe 本质上也是一个 Native Application ~）
+    </p></div></li></ul></li></ul></li></ul></li></ul></li>
+	<li class="col" id="FMID_45561914FM"><div class="nodecontent">3.QueueUserApc/NtQueueAPCThread</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_511260377FM"><div class="nodecontent">[?] 这个没有提供原始代码</div></li>
+	<li class="basic" id="FMID_1160559455FM"><div class="nodecontent"><p>
+      原理:
+    </p><p>
+      线程从等待状态苏醒时，会检测是否有APC交个自己执行，如果有则执行。
+    </p><p>
+      APC分两种，内核APC和用户模式APC，这里通过QueueUserAPC将APC过程添加到目标线程中APC队列，等待线程从等待状态到苏醒切换时，执行此线程。
+    </p></div></li></ul></li>
+	<li class="col" id="FMID_1211340145FM"><div class="nodecontent">4.SetThreadContext</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_594997286FM"><div class="nodecontent">原理:</div></li>
+	<li class="col" id="FMID_1329388789FM"><div class="nodecontent">ps</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1677499731FM"><div class="nodecontent"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: Microsoft YaHei; font-size: medium; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px"><font size="14.6667px" color="#454545" face="" calibri="#DEFAULT">CONTEXT_FULL</font></p><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: Microsoft YaHei; font-size: medium; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px"><font size="14.6667px" color="#454545" face="" calibri="#DEFAULT"><br style="background-color: white"/>
+      源码内容: </font></p><pre style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; word-spacing: 0px">		//获取Context
+		ZeroMemory(&amp;Context,sizeof(CONTEXT));
+		Context.ContextFlags = CONTEXT_FULL;             ------------1
+		if (!GetThreadContext(hThread,&amp;Context))
+		{
+			printf("[-] 无法获取线程 %d 的Context!\n",dwTidList[i]);
+			CloseHandle(hThread);
+			continue;
+		}</pre><pre style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; word-spacing: 0px"><br/></pre><pre style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; word-spacing: 0px">1 ------ - WinNT.h 中的定义如下
+#define CONTEXT_CONTROL         (CONTEXT_i386 | 0x00000001L) // SS:SP, CS:IP, FLAGS, BP
+#define CONTEXT_INTEGER         (CONTEXT_i386 | 0x00000002L) // AX, BX, CX, DX, SI, DI
+#define CONTEXT_SEGMENTS        (CONTEXT_i386 | 0x00000004L) // DS, ES, FS, GS
+#define CONTEXT_FLOATING_POINT  (CONTEXT_i386 | 0x00000008L) // 387 state
+#define CONTEXT_DEBUG_REGISTERS (CONTEXT_i386 | 0x00000010L) // DB 0-3,6,7
+#define CONTEXT_EXTENDED_REGISTERS  (CONTEXT_i386 | 0x00000020L) // cpu specific extensions
+
+#define CONTEXT_FULL (CONTEXT_CONTROL | CONTEXT_INTEGER |\
+                      CONTEXT_SEGMENTS)
+
+#define CONTEXT_ALL             (CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_SEGMENTS | \
+                                 CONTEXT_FLOATING_POINT | CONTEXT_DEBUG_REGISTERS | \
+                                 CONTEXT_EXTENDED_REGISTERS)
+
+#define CONTEXT_XSTATE          (CONTEXT_i386 | 0x00000040L)</pre></div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1938640986FM"><div class="nodecontent"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: Microsoft YaHei; font-size: medium; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px"><font size="2">https://www.cnblogs.com/zplutor/archive/2011/03/13/1983010.html </font></p><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: Microsoft YaHei; font-size: medium; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px"><font size="2"><br size="2"/></font></p><div data-blogger-escaped-style="background-color: white; color: #4b4b4b; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; margin: 10px auto;" style="font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: white; color: rgb(75, 75, 75); font-family: verdana, geneva, arial, helvetica, sans-serif; font-size: 13px; line-height: 1.5; margin-top: 10px; margin-bottom: 10px; margin-right: 0; margin-left: 0"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">获取某个线程的上下文环境需要使用GetThreadContext函数，该函数声明如下： </font></p></div><div class="cnblogs_code" data-blogger-escaped-style="background-color: whitesmoke; border: 1px solid rgb(204, 204, 204); font-family: " courier="#DEFAULT" new="#DEFAULT" important="#DEFAULT" font-size="#DEFAULT" px="#DEFAULT" margin="#DEFAULT" overflow="#DEFAULT" auto="#DEFAULT" padding="#DEFAULT" style="color: rgb(0, 0, 0); font-family: Microsoft YaHei; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; font-size: 12px; margin-top: 5px; margin-bottom: 5px; margin-right: 0px; margin-left: 0px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font color="#008080" size="2">1</font><font size="2"> BOOL WINAPI GetThreadContext( </font></p><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font color="#008080" size="2">2</font><font size="2">     HANDLE hThread, </font></p><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font color="#008080" size="2">3</font><font size="2">     LPCONTEXT lpContext </font></p><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font color="#008080" size="2">4</font><font size="2"> );</font></p><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">第一个参数是线程的句柄，第二个参数是指向CONTEXT结构的指针。要注意，调用该函数之前需要设置CONTEXT结构的ContextFlags字段，指明你想要获取哪部分寄存器的值。该字段的取值如下 </font></p></div><table border="1" cellpadding="0" cellspacing="0" class="MsoTableGrid" data-blogger-escaped-style="background-color: white; border-collapse: collapse; border: medium none; color: #4b4b4b; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; width: 669px; word-break: break-word;" style="letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; background-color: white; border-top-style: none; border-top-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium; border-left-style: none; border-left-width: medium; color: rgb(75, 75, 75); font-family: verdana, geneva, arial, helvetica, sans-serif; font-size: 13px; width: 669px"><tr><td data-blogger-escaped-style="background-color: transparent; border-collapse: collapse; border: 1pt solid black; color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 147.15pt;" valign="top" width="196" style="border-top-color: black; border-top-style: solid; border-top-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-left-color: black; border-left-style: solid; border-left-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 147.15pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font face="" size="2">CONTEXT_CONTROL<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: rgb(240, 240, 240); border-right: 1pt solid black; border-top: 1pt solid black; color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 354.4pt;" valign="top" width="473" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; border-top-color: black; border-top-style: solid; border-top-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 354.4pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">获取</font><font face="" size="2">EBP</font><font size="2">，</font><font face="" size="2">EIP</font><font size="2">，</font><font face="" size="2">CS</font><font size="2">，</font><font face="" size="2">EFLAGS</font><font size="2">，</font><font face="" size="2">ESP</font><font size="2">和</font><font face="" size="2">SS</font><font size="2">寄存器的值。<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td></tr><tr><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: 1pt solid black; border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 147.15pt;" valign="top" width="196" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-left-color: black; border-left-style: solid; border-left-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 147.15pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font face="" size="2">CONTEXT_INTEGER<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: rgb(240, 240, 240); border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 354.4pt;" valign="top" width="473" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 354.4pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">获取</font><font face="" size="2">EAX</font><font size="2">，</font><font face="" size="2">EBX</font><font size="2">，</font><font face="" size="2">ECX</font><font size="2">，</font><font face="" size="2">EDX</font><font size="2">，</font><font face="" size="2">ESI</font><font size="2">和</font><font face="" size="2">EDI</font><font size="2">寄存器的值。<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td></tr><tr><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: 1pt solid black; border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 147.15pt;" valign="top" width="196" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-left-color: black; border-left-style: solid; border-left-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 147.15pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font face="" size="2">CONTEXT_SEGMENTS<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: rgb(240, 240, 240); border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 354.4pt;" valign="top" width="473" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 354.4pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">获取</font><font face="" size="2">DS</font><font size="2">，</font><font face="" size="2">ES</font><font size="2">，</font><font face="" size="2">FS</font><font size="2">和</font><font face="" size="2">GS</font><font size="2">寄存器的值。<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td></tr><tr><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: 1pt solid black; border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 147.15pt;" valign="top" width="196" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-left-color: black; border-left-style: solid; border-left-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 147.15pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font face="" size="2">CONTEXT_FLOATING_POINT<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: rgb(240, 240, 240); border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 354.4pt;" valign="top" width="473" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 354.4pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">获取有关浮点数寄存器的值。<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td></tr><tr><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: 1pt solid black; border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 147.15pt;" valign="top" width="196" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-left-color: black; border-left-style: solid; border-left-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 147.15pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font face="" size="2">CONTEXT_DEBUG_REGISTERS<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: rgb(240, 240, 240); border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 354.4pt;" valign="top" width="473" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 354.4pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">获取</font><font face="" size="2">DR0</font><font size="2">，</font><font face="" size="2">DR1</font><font size="2">，</font><font face="" size="2">DR2</font><font size="2">，</font><font face="" size="2">DR3</font><font size="2">，</font><font face="" size="2">DR6</font><font size="2">，</font><font face="" size="2">DR7</font><font size="2">寄存器的值。<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td></tr><tr><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: 1pt solid black; border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 147.15pt;" valign="top" width="196" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-left-color: black; border-left-style: solid; border-left-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 147.15pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font face="" size="2">CONTEXT_FULL<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td><td data-blogger-escaped-style="background-color: transparent; border-bottom: 1pt solid black; border-collapse: collapse; border-image: initial; border-left: rgb(240, 240, 240); border-right: 1pt solid black; border-top: rgb(240, 240, 240); color: #454545; font-size: 12px; padding: 0cm 5.4pt; width: 354.4pt;" valign="top" width="473" style="border-bottom-color: black; border-bottom-style: solid; border-bottom-width: 1pt; border-right-color: black; border-right-style: solid; border-right-width: 1pt; color: rgb(69, 69, 69); font-size: 12px; padding-top: 0cm; padding-bottom: 0cm; padding-right: 5.4pt; padding-left: 5.4pt; width: 354.4pt"><div class="MsoNormal" data-blogger-escaped-style="font-size: 13px; line-height: 19.5px; margin: 0cm 0cm 0pt;" style="font-size: 13px; line-height: 19.5px; margin-top: 0cm; margin-right: 0cm; margin-bottom: 0pt; margin-left: 0cm"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">等于</font><font face="" size="2">CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_SEGMENTS<data-blogger-escaped-o p="#DEFAULT" size="2" style="line-height: 1.5"/></font></p></div></td></tr></table><div data-blogger-escaped-style="background-color: white; color: #4b4b4b; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.5; margin: 10px auto;" style="font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: white; color: rgb(75, 75, 75); font-family: verdana, geneva, arial, helvetica, sans-serif; font-size: 13px; line-height: 1.5; margin-top: 10px; margin-bottom: 10px; margin-right: 0; margin-left: 0"><p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"><font size="2">调用GetThreadContext函数之后，CONTEXT结构相应的字段就会被赋值，此时就可以输出各个寄存器的值 </font></p></div></div></li></ul></li></ul></li></ul></li></ul></li></ul></div></body></html>
