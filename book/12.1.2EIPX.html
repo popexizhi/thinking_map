@@ -23,7 +23,7 @@
                    };
                };
           
-          --></script></head><body><h1>12.1.2 改变线程EIP注入</h1><div style="width:96%;  padding:2%;  margin-bottom:10px;  border: 0px;  text-align:center;  vertical-align:center;"><img src="12.1.2EIPX.html_files/image.png" style="margin-bottom:10px; &#9;border: 0px; &#9;text-align:center; &#9;vertical-align:center;" alt="Imagemap" usemap="#fm_imagemap"/></div><map name="fm_imagemap" id="fm_imagemap"><area shape="rect" href="#FMID_353050944FM" alt="12.1.2 改变线程EIP注入" title="12.1.2 改变线程EIP注入" coords="0,321,154,365" /><area shape="rect" href="#FMID_1506662217FM" alt="1.CreatRemoteThread" title="1.CreatRemoteThread" coords="174,156,309,178" /><area shape="rect" href="#FMID_995158956FM" alt="[test pass] " title="[test pass] " coords="329,0,401,22" /><area shape="rect" href="#FMID_1775936511FM" alt="原理: 
+          --></script></head><body><h1>12.1.2 改变线程EIP注入</h1><div style="width:96%;  padding:2%;  margin-bottom:10px;  border: 0px;  text-align:center;  vertical-align:center;"><img src="12.1.2EIPX.html_files/image.png" style="margin-bottom:10px; &#9;border: 0px; &#9;text-align:center; &#9;vertical-align:center;" alt="Imagemap" usemap="#fm_imagemap"/></div><map name="fm_imagemap" id="fm_imagemap"><area shape="rect" href="#FMID_353050944FM" alt="12.1.2 改变线程EIP注入" title="12.1.2 改变线程EIP注入" coords="1539,477,1693,521" /><area shape="rect" href="#FMID_1506662217FM" alt="1.CreatRemoteThread" title="1.CreatRemoteThread" coords="1713,156,1848,178" /><area shape="rect" href="#FMID_995158956FM" alt="[test pass] " title="[test pass] " coords="1868,0,1940,22" /><area shape="rect" href="#FMID_1775936511FM" alt="原理: 
 
  1.在目标进程中申请内存，并向其中写入dll路径 
 
@@ -31,7 +31,7 @@
 
  1.在目标进程中申请内存，并向其中写入dll路径 
 
- 2.然后调 ..." coords="329,25,941,335" /><area shape="rect" href="#FMID_827829246FM" alt="2.RtlCreateUserThread" title="2.RtlCreateUserThread" coords="174,413,314,435" /><area shape="rect" href="#FMID_323299943FM" alt="[test fail] -- 这个好奇怪原始代码编译运行也不行" title="[test fail] -- 这个好奇怪原始代码编译运行也不行" coords="334,338,597,360" /><area shape="rect" href="#FMID_1711353485FM" alt="原理: 
+ 2.然后调 ..." coords="1868,25,2480,335" /><area shape="rect" href="#FMID_827829246FM" alt="2.RtlCreateUserThread" title="2.RtlCreateUserThread" coords="1713,413,1853,435" /><area shape="rect" href="#FMID_323299943FM" alt="[test fail] -- 这个好奇怪原始代码编译运行也不行" title="[test fail] -- 这个好奇怪原始代码编译运行也不行" coords="1873,338,2136,360" /><area shape="rect" href="#FMID_1711353485FM" alt="原理: 
 
  RtlCreateUserThread 
 
@@ -39,11 +39,31 @@
 
  RtlCreateUserThread 
 
- ntdll中Rtl执 ..." coords="334,363,911,511" /><area shape="rect" href="#FMID_206422228FM" alt="PS:" title="PS:" coords="931,424,962,446" /><area shape="rect" href="#FMID_431188660FM" alt="native程序介绍:" title="native程序介绍:" coords="982,412,1077,434" /><area shape="rect" href="#FMID_1470723833FM" alt="smss.exe与native的启动时机" title="smss.exe与native的启动时机" coords="982,437,1152,459" /><area shape="rect" href="#FMID_45561914FM" alt="3.QueueUserApc/NtQueueAPCThread" title="3.QueueUserApc/NtQueueAPCThread" coords="174,553,395,575" /><area shape="rect" href="#FMID_511260377FM" alt="[?] 这个没有提供原始代码" title="[?] 这个没有提供原始代码" coords="415,514,563,536" /><area shape="rect" href="#FMID_1160559455FM" alt="原理: 
+ ntdll中Rtl执 ..." coords="1873,363,2450,511" /><area shape="rect" href="#FMID_206422228FM" alt="PS:" title="PS:" coords="2470,424,2501,446" /><area shape="rect" href="#FMID_431188660FM" alt="native程序介绍:" title="native程序介绍:" coords="2521,412,2616,434" /><area shape="rect" href="#FMID_1470723833FM" alt="smss.exe与native的启动时机" title="smss.exe与native的启动时机" coords="2521,437,2691,459" /><area shape="rect" href="#FMID_45561914FM" alt="3.QueueUserApc/NtQueueAPCThread" title="3.QueueUserApc/NtQueueAPCThread" coords="1713,553,1934,575" /><area shape="rect" href="#FMID_511260377FM" alt="[?] 这个没有提供原始代码" title="[?] 这个没有提供原始代码" coords="1954,514,2102,536" /><area shape="rect" href="#FMID_1160559455FM" alt="原理: 
 
  线程从等待状态苏醒时，会检测是否有APC交个自己执行，如果有则执行 ..." title="原理: 
 
- 线程从等待状态苏醒时，会检测是否有APC交个自己执行，如果有则执行 ..." coords="415,539,1027,615" /><area shape="rect" href="#FMID_1211340145FM" alt="4.SetThreadContext" title="4.SetThreadContext" coords="174,643,294,665" /><area shape="rect" href="#FMID_594997286FM" alt="原理:" title="原理:" coords="314,618,353,640" /><area shape="rect" href="#FMID_1329388789FM" alt="ps" title="ps" coords="314,643,340,665" /><area shape="rect" href="#FMID_120938582FM" alt="VoID shellcodeFun" title="VoID shellcodeFun" coords="314,668,430,690" /></map>
+ 线程从等待状态苏醒时，会检测是否有APC交个自己执行，如果有则执行 ..." coords="1954,539,2566,615" /><area shape="rect" href="#FMID_1211340145FM" alt="4.SetThreadContext" title="4.SetThreadContext" coords="1713,799,1833,821" /><area shape="rect" href="#FMID_594997286FM" alt="原理:" title="原理:" coords="1853,620,1892,642" /><area shape="rect" href="#FMID_154899357FM" alt="这个类比linux" title="这个类比linux" coords="1912,618,1997,640" /><area shape="rect" href="#FMID_1329388789FM" alt="ps" title="ps" coords="1853,645,1879,667" /><area shape="rect" href="#FMID_120938582FM" alt="VoID shellcodeFun-eip计算" title="VoID shellcodeFun-eip计算" coords="1853,670,2014,692" /><area shape="rect" href="#FMID_202290014FM" alt="pushad/pusha与pushfd/pushf" title="pushad/pusha与pushfd/pushf" coords="1853,707,2029,729" /><area shape="rect" href="#FMID_1762923204FM" alt="pushad/pusha" title="pushad/pusha" coords="2049,695,2141,717" /><area shape="rect" href="#FMID_499743608FM" alt="pushfd/pushf" title="pushfd/pushf" coords="2049,720,2133,742" /><area shape="rect" href="#FMID_182374800FM" alt="push dword ptr ds:[ebx+0x34]" title="push dword ptr ds:[ebx+0x34]" coords="1853,745,2025,767" /><area shape="rect" href="#FMID_1241388329FM" alt="xchg eax, [esp + 0x24]" title="xchg eax, [esp + 0x24]" coords="1853,858,1984,880" /><area shape="rect" href="#FMID_1212108368FM" alt="xchg" title="xchg" coords="2004,809,2041,831" /><area shape="rect" href="#FMID_91240001FM" alt="https://baike.baidu.com/item/XCHG 
+
+ 
+
+  ..." title="https://baike.baidu.com/item/XCHG 
+
+ 
+
+  ..." coords="2061,770,2673,846" /><area shape="rect" href="#FMID_996857683FM" alt="" title="" coords="2061,849,2083,871" /><area shape="rect" href="#FMID_1341386784FM" alt="esp+0x24 如何计算到push eax 的位置" title="esp+0x24 如何计算到push eax 的位置" coords="2004,886,2222,908" /><area shape="rect" href="#FMID_1761753218FM" alt="堆栈平衡" title="堆栈平衡" coords="2242,874,2302,896" /><area shape="rect" href="#FMID_1795812777FM" alt="而这里的call是内部堆栈平衡的所以计算之前的eax的地址，就是栈底+ push ..." title="而这里的call是内部堆栈平衡的所以计算之前的eax的地址，就是栈底+ push ..." coords="2242,899,2795,921" /><area shape="rect" href="#FMID_1547902739FM" alt="esp/eip/ebp" title="esp/eip/ebp" coords="2004,924,2081,946" /><area shape="rect" href="#FMID_42606057FM" alt="retn" title="retn" coords="2004,949,2037,971" /><area shape="rect" href="#FMID_717229796FM" alt="附带code分析" title="附带code分析" coords="1853,978,1940,1000" /><area shape="rect" href="#FMID_1787396330FM" alt="ps:" title="ps:" coords="1960,976,1989,998" /><area shape="rect" href="#FMID_1086801998FM" alt="ASLR" title="ASLR" coords="2009,974,2052,996" /><area shape="rect" href="#FMID_1958992368FM" alt="list_try" title="list_try" coords="1472,476,1519,498" /><area shape="rect" href="#FMID_1612683797FM" alt="elf-ida try" title="elf-ida try" coords="1391,462,1452,484" /><area shape="rect" href="#FMID_229156192FM" alt="https://blog.csdn.net/ShellDawn/article/ ..." title="https://blog.csdn.net/ShellDawn/article/ ..." coords="1051,8,1371,30" /><area shape="rect" href="#FMID_1402222990FM" alt="eip的类比" title="eip的类比" coords="1306,475,1371,497" /><area shape="rect" href="#FMID_1016225605FM" alt="esp/eip在linux的堆栈中使用" title="esp/eip在linux的堆栈中使用" coords="1124,461,1286,483" /><area shape="rect" href="#FMID_1259359308FM" alt="[read] https://blog.csdn.net/u011089570/ ..." title="[read] https://blog.csdn.net/u011089570/ ..." coords="740,441,1104,499" /><area shape="rect" href="#FMID_639693646FM" alt="list" title="list" coords="692,254,720,276" /><area shape="rect" href="#FMID_495291908FM" alt="main" title="main" coords="632,242,672,264" /><area shape="rect" href="#FMID_907240366FM" alt="293 00000000004004f9 &lt;main&gt;:             ..." title="293 00000000004004f9 &lt;main&gt;:             ..." coords="0,33,612,469" /><area shape="rect" href="#FMID_333923523FM" alt="swap" title="swap" coords="630,472,672,494" /><area shape="rect" href="#FMID_1150954414FM" alt="ana" title="ana" coords="687,677,720,699" /><area shape="rect" href="#FMID_1551108852FM" alt="1. http://ju.outofmemory.cn/entry/769 
+
+ ..." title="1. http://ju.outofmemory.cn/entry/769 
+
+ ..." coords="55,497,667,573" /><area shape="rect" href="#FMID_1261544713FM" alt="3. long int的实验效果 
+
+ 293 00000000004004ff ..." title="3. long int的实验效果 
+
+ 293 00000000004004ff ..." coords="317,576,667,778" /><area shape="rect" href="#FMID_883214589FM" alt="4.lea 
+
+ https://blog.csdn.net/robbie131 ..." title="4.lea 
+
+ https://blog.csdn.net/robbie131 ..." coords="55,781,667,855" /><area shape="rect" href="#FMID_368231545FM" alt="leaveq&amp;&amp;retq" title="leaveq&amp;&amp;retq" coords="582,858,667,880" /><area shape="rect" href="#FMID_1718845131FM" alt="[?]" title="[?]" coords="695,883,720,905" /><area shape="rect" href="#FMID_1411649304FM" alt="这里可以测试这里的swap的代码，在linux编译运行查看asm" title="这里可以测试这里的swap的代码，在linux编译运行查看asm" coords="954,910,1286,932" /><area shape="rect" href="#FMID_609907377FM" alt="https://www.jianshu.com/p/594357dff57e" title="https://www.jianshu.com/p/594357dff57e" coords="699,908,934,930" /><area shape="rect" href="#FMID_342565066FM" alt="read elf 逆向" title="read elf 逆向" coords="1372,937,1452,959" /><area shape="rect" href="#FMID_225728599FM" alt="https://wizardforcel.gitbooks.io/re-for- ..." title="https://wizardforcel.gitbooks.io/re-for- ..." coords="894,935,1352,957" /><area shape="rect" href="#FMID_366373712FM" alt="" title="" coords="1497,962,1519,984" /></map>
 
 <div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65543&quot;)" id="imgN65543"/><a id="FMID_353050944FM"/><div class="nodecontent">12.1.2 改变线程EIP注入</div><div class="content" id="N65543"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65549&quot;)" id="imgN65549"/><a id="FMID_1506662217FM"/><div class="nodecontent">1.CreatRemoteThread</div><div class="content" id="N65549"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_995158956FM"/><div class="nodecontent">[test pass] </div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1775936511FM"/><div class="nodecontent">
     <p>
@@ -246,7 +266,7 @@
     <p>
       APC分两种，内核APC和用户模式APC，这里通过QueueUserAPC将APC过程添加到目标线程中APC队列，等待线程从等待状态到苏醒切换时，执行此线程。
     </p>
-  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65910&quot;)" id="imgN65910"/><a id="FMID_1211340145FM"/><div class="nodecontent">4.SetThreadContext</div><div class="content" id="N65910"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_594997286FM"/><div class="nodecontent">原理:</div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65923&quot;)" id="imgN65923"/><a id="FMID_1329388789FM"/><div class="nodecontent">ps</div><div class="content" id="N65923"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65930&quot;)" id="imgN65930"/><a id="FMID_1677499731FM"/><div class="nodecontent">
+  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65910&quot;)" id="imgN65910"/><a id="FMID_1211340145FM"/><div class="nodecontent">4.SetThreadContext</div><div class="content" id="N65910"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65917&quot;)" id="imgN65917"/><a id="FMID_594997286FM"/><div class="nodecontent">原理:</div><div class="content" id="N65917"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_154899357FM"/><div class="nodecontent">这个类比linux</div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65930&quot;)" id="imgN65930"/><a id="FMID_1329388789FM"/><div class="nodecontent">ps</div><div class="content" id="N65930"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65937&quot;)" id="imgN65937"/><a id="FMID_1677499731FM"/><div class="nodecontent">
     <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: Microsoft YaHei; font-size: medium; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
       <font size="14.6667px" color="#454545" face="" calibri="#DEFAULT">CONTEXT_FULL</font>
     </p>
@@ -282,7 +302,7 @@
                                  CONTEXT_EXTENDED_REGISTERS)
 
 #define CONTEXT_XSTATE          (CONTEXT_i386 | 0x00000040L)</pre>
-  </div><div class="content" id="N65930"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1938640986FM"/><div class="nodecontent">
+  </div><div class="content" id="N65937"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1938640986FM"/><div class="nodecontent">
     <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(0, 0, 0); font-family: Microsoft YaHei; font-size: medium; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
       <font size="2">https://www.cnblogs.com/zplutor/archive/2011/03/13/1983010.html </font>
     </p>
@@ -415,5 +435,1065 @@
         <font size="2">调用GetThreadContext函数之后，CONTEXT结构相应的字段就会被赋值，此时就可以输出各个寄存器的值 </font>
       </p>
     </div>
-  </div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_120938582FM"/><div class="nodecontent">VoID shellcodeFun</div></div></div></div></div></div>
+  </div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66620&quot;)" id="imgN66620"/><a id="FMID_120938582FM"/><div class="nodecontent">VoID shellcodeFun-eip计算</div><div class="content" id="N66620"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66627&quot;)" id="imgN66627"/><a id="FMID_1861043945FM"/><div class="nodecontent">
+    <p>
+      code:
+    </p>
+    <p>
+      VOID ShellCodeFun(VOID)
+    </p>
+    <p>
+      {
+    </p>
+    <p>
+      __asm
+    </p>
+    <p>
+      {
+    </p>
+    <p>
+      push eax //占位,一会儿用做跳转地址
+    </p>
+    <p>
+      pushad   //大小0x20
+    </p>
+    <p>
+      pushfd   //大小0x04
+    </p>
+    <p>
+      call L001
+    </p>
+    <p>
+      L001:
+    </p>
+    <p>
+      pop ebx
+    </p>
+    <p>
+      sub ebx,8         -------------------------------------------------?
+    </p>
+    <p>
+      push dword ptr ds:[ebx+0x34] //szDllPath
+    </p>
+    <p>
+      call dword ptr ds:[ebx+0x30] //LoadLibraryA
+    </p>
+    <p>
+      mov eax,dword ptr ds:[ebx+0x38] //OriginalEIP
+    </p>
+    <p>
+      xchg eax,[esp+0x24] //将原来的EIP交换到栈上
+    </p>
+    <p>
+      popfd
+    </p>
+    <p>
+      popad
+    </p>
+    <p>
+      retn //jmp to OriginalEIP
+    </p>
+    <p>
+      nop
+    </p>
+    <p>
+      nop
+    </p>
+    <p>
+      nop
+    </p>
+    <p>
+      nop
+    </p>
+    <p>
+      nop
+    </p>
+    <p>
+      }
+    </p>
+    <p>
+      }
+    </p>
+    <p>
+      [popexizhi: 这里的ebx,8为什么是可以自定义到入口的eip地址，这个pope一直没有计算明白，参见下图1，而pope的计算方式是图2，这里的8，是指 push eax这个命令在内存执行占用1字节的地址存储空间，不是说push eax指定的内存50~5E地址，见图1的A部分，是代码段本身的占用地址，不是其所指向的内存位置地址，所以剩下的就好解释了
+    </p>
+    <p>
+      pusha 代码段占用1个字节（图1 中的 60）
+    </p>
+    <p>
+      pushf 代码段占用1个字节（图1 中的 9c）
+    </p>
+    <p>
+      call $+5 代码段占用5个字节（图1 中的 E8 00 00 00 00）
+    </p>
+    <p>
+      而调用了L001之后的
+    </p>
+    <p>
+      先把eip出站到ebx中
+    </p>
+    <p>
+      再用ebx-8，就得到了调用这个shellcode之前的最后一个执行地址,即eip的内容了:)
+    </p>
+    <p>
+      ]
+    </p>
+    <p>
+      图1<img src="../../../../../../C:/Users/test/Pictures/blog/shellcode_1.JPG"/>
+    </p>
+    <p>
+      图2 <img src="../../../../../../C:/Users/test/Pictures/blog/shellcode_2.JPG"/>
+    </p>
+  </div><div class="content" id="N66627"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1724280745FM"/><div class="nodecontent"/></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66766&quot;)" id="imgN66766"/><a id="FMID_202290014FM"/><div class="nodecontent">pushad/pusha与pushfd/pushf</div><div class="content" id="N66766"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66772&quot;)" id="imgN66772"/><a id="FMID_1762923204FM"/><div class="nodecontent">pushad/pusha</div><div class="content" id="N66772"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_448718856FM"/><div class="nodecontent">
+    <p>
+      http://scc.qibebt.cas.cn/docs/optimization/VTune(TM)%20User's%20Guide/mergedProjects/analyzer_ec/mergedProjects/reference_olh/instruct32_hh/vc267.htm
+    </p>
+    <h1 style="background-color: rgb(0, 51, 255); color: rgb(255, 255, 255); margin-top: 0; margin-bottom: 1px; font-size: 18.72px; padding-left: 2pt; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="4">PUSHA/PUSHAD - 压入所有通用寄存器 </font>
+    </h1>
+    <table x-use-null-cells="" wrapperparagraphselector="P" cellspacing="3" border="1" class="whs1" style="font-size: 14.4px; margin-bottom: 0pt; border-spacing: 3px; margin-top: 14pt; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px">
+      <tr style="vertical-align: top">
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <h3 class="TableHead" style="font-size: 14.4px; font-weight: bold; margin-bottom: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; color: rgb(0, 0, 0); background-color: rgb(238, 238, 238); padding-left: 3pt; text-align: left">
+            <font size="4">操作码 </font>
+          </h3>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <h3 class="TableHead" style="font-size: 14.4px; font-weight: bold; margin-bottom: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; color: rgb(0, 0, 0); background-color: rgb(238, 238, 238); padding-left: 3pt; text-align: left">
+            <font size="4">指令 </font>
+          </h3>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <h3 class="TableHead" style="font-size: 14.4px; font-weight: bold; margin-bottom: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; color: rgb(0, 0, 0); background-color: rgb(238, 238, 238); padding-left: 3pt; text-align: left">
+            <font size="4">说明 </font>
+          </h3>
+        </td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="4">60 </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="4">PUSHA </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="4">压入 AX、CX、DX、BX、原始 SP、BP、SI 及 DI </font>
+          </p>
+        </td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="4">60 </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="4">PUSHAD </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="4">压入 EAX、ECX、EDX、EBX、原始 ESP、EBP、ESI 及 EDI </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="4">说明 </font>
+    </h2>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="4">将通用寄存器的内容压入堆栈。这些寄存器按以下顺序存储到堆栈：EAX、ECX、EDX、EBX、EBP、ESP（原始值）、EBP、ESI 及 EDI（如果当前操作数大小属性为 32）；AX、CX、DX、BX、SP（原始值）、BP、SI 及 DI（如果操作数大小属性为 16）。这些指令执行 POPA/POPAD 指令的逆操作。ESP 或 SP 寄存器压入的值是它在第一个寄存器压入之前的值（请参阅下面的“操作”部分）。 </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="4">PUSHA（全部压入）与 PUSHAD（压入所有双字）助记符引用相同的操作码。当操作数属性为 16 时，使用 PUSHA 指令，而当操作数属性为 32 时，使用 PUSHAD 指令。</font><font size="4" color="#006600"><b>某些汇编器可能在使用 PUSHA 时将操作数大小强制为 16，而在使用 PUSHAD 时将操作数大小强制为 32。其它汇编器可能会将这些助记符看作同义词 (PUSHA/PUSHAD)，并使用操作数大小属性的当前设置来确定要压入堆栈的值的大小，而不管使用哪一个助记符</b></font><font size="4">。[popexizhi:这里应该是pushad的code，但再asm中看到都是pusha吧？！, 那特殊的汇编器是哪个呢go一下去,没找到嗨，先mark一下吧，那是一个陌生的领域:)] </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="4">在实地址模式中，如果执行 PUSH/PUSHAD 指令时，ESP 或 SP 寄存器为 1、3 或 5，则处理器会由于堆栈空间不足而关闭。不会生成指示此情况的异常。 </font>
+    </p>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="4">操作 </font>
+    </h2>
+    <p class="Preformatted" style="margin-bottom: 1px; margin-top: 1px; font-family: Courier New, Courier, monospace; font-size: 14.4px; color: rgb(0, 0, 0); line-height: normal; white-space: nowrap; background-color: rgb(238, 238, 238); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px">
+      <font size="4">IF OperandSize <img src="http://scc.qibebt.cas.cn/docs/optimization/VTune(TM)%20User's%20Guide/mergedProjects/analyzer_ec/mergedProjects/reference_olh/instruct32_hh/arrwleft.gif" border="0" class="img_whs3" size="4" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"/> 32 (* PUSHAD instruction *)<br size="4"/>THEN<br size="4"/>Temp <img src="http://scc.qibebt.cas.cn/docs/optimization/VTune(TM)%20User's%20Guide/mergedProjects/analyzer_ec/mergedProjects/reference_olh/instruct32_hh/arrwleft.gif" border="0" class="img_whs3" size="4" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"/> (ESP);<br size="4"/>Push(EAX);<br size="4"/>Push(ECX);<br size="4"/>Push(EDX);<br size="4"/>Push(EBX);<br size="4"/>Push(Temp);<br size="4"/>Push(EBP);<br size="4"/>Push(ESI);<br size="4"/>Push(EDI);<br size="4"/>ELSE (* OperandSize <img src="http://scc.qibebt.cas.cn/docs/optimization/VTune(TM)%20User's%20Guide/mergedProjects/analyzer_ec/mergedProjects/reference_olh/instruct32_hh/arrwleft.gif" border="0" class="img_whs3" size="4" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"/> 16, PUSHA instruction *)<br size="4"/>Temp <img src="http://scc.qibebt.cas.cn/docs/optimization/VTune(TM)%20User's%20Guide/mergedProjects/analyzer_ec/mergedProjects/reference_olh/instruct32_hh/arrwleft.gif" border="0" class="img_whs3" size="4" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"/> (SP);<br size="4"/>Push(AX);<br size="4"/>Push(CX);<br size="4"/>Push(DX);<br size="4"/>Push(BX);<br size="4"/>Push(Temp);<br size="4"/>Push(BP);<br size="4"/>Push(SI);<br size="4"/>Push(DI);<br size="4"/>FI;</font>
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67112&quot;)" id="imgN67112"/><a id="FMID_499743608FM"/><div class="nodecontent">pushfd/pushf</div><div class="content" id="N67112"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_449602609FM"/><div class="nodecontent">
+    <p>
+      http://www.hgy413.com/hgydocs/IA32/instruct32_hh/vc268.htm
+    </p>
+    <h1 style="background-color: rgb(0, 51, 255); color: rgb(255, 255, 255); margin-top: 0; margin-bottom: 1px; font-size: 18.72px; padding-left: 2pt; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">PUSHF/PUSHFD - 将 EFLAGS 寄存器压入堆栈 </font>
+    </h1>
+    <table x-use-null-cells="" wrapperparagraphselector="P" cellspacing="3" border="1" class="whs1" style="font-size: 14.4px; margin-bottom: 0pt; margin-top: 14pt; border-spacing: 3px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px">
+      <tr style="vertical-align: top">
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <h3 class="TableHead" style="font-size: 14.4px; font-weight: bold; margin-bottom: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; color: rgb(0, 0, 0); background-color: rgb(238, 238, 238); padding-left: 3pt; text-align: left">
+            <font size="3">操作码 </font>
+          </h3>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <h3 class="TableHead" style="font-size: 14.4px; font-weight: bold; margin-bottom: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; color: rgb(0, 0, 0); background-color: rgb(238, 238, 238); padding-left: 3pt; text-align: left">
+            <font size="3">指令 </font>
+          </h3>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <h3 class="TableHead" style="font-size: 14.4px; font-weight: bold; margin-bottom: 0px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; color: rgb(0, 0, 0); background-color: rgb(238, 238, 238); padding-left: 3pt; text-align: left">
+            <font size="3">说明 </font>
+          </h3>
+        </td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="3">9C </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="3">PUSHF </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="3">压入 EFLAGS 的低 16 位 </font>
+          </p>
+        </td>
+      </tr>
+      <tr style="vertical-align: top">
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="3">9C </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="3">PUSHFD </font>
+          </p>
+        </td>
+        <td valign="middle" class="whs2" style="vertical-align: top; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px">
+          <p class="TableCell" style="margin-bottom: 0px; margin-top: 1px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); padding-left: 3pt">
+            <font size="3">压入 EFLAGS </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">说明 </font>
+    </h2>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">将堆栈指针递减 4（如果当前操作数大小属性为 32），并将 EFLAGS 寄存器的全部内容压入堆栈；或将堆栈指针递减 2（如果当前操作数大小属性为 16），并将 EFLAGS 寄存器的低 16 位（即 FLAGS 寄存器）压入堆栈。（这些指令执行 POPF/POPFD 指令的逆操作）。将整个 EFLAGS 寄存器复制到堆栈时，不会复制 VM 与 RF 标志（位 16 与 17）；相反，在存储到堆栈的 EFLAGS 映像中，这些标志的值会被清除。如需有关 EFLAGS 寄存器的详细信息，请参阅“</font><font face="Verdana" size="3">IA-32 英特尔(R) 体系结构软件开发人员手册</font><font size="3">”第 1 卷第 3 章中标题为“EFLAGS 寄存器”的部分。 </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">PUSHF（压入标志）与 PUSHFD（压入标志双字）助记符引用相同的操作码。当操作数属性为 16 时，使用 PUSHF 指令，而当操作数属性为 32 时，使用 PUSHFD 指令。某些汇编器可能在使用 PUSHF 时将操作数大小强制为 16，而在使用 PUSHFD 时将操作数大小强制为 32。其它汇编器可能会将这些助记符看作同义词 (PUSHF/PUSHFD)，并使用操作数大小属性的当前设置来确定要压入堆栈的值的大小，而不管使用哪一个助记符。 </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">在虚 8086 模式中且 I/O 特权级别 (IOPL) 小于 3 时，PUSHF/PUSHFD 指令会导致一般保护性异常 (#GP)。 </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">在实地址模式中，如果执行 PUSH/PUSHAD 指令时，ESP 或 SP 寄存器为 1、3 或 5，则处理器会由于堆栈空间不足而关闭。不会生成指示此情况的异常。 </font>
+    </p>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">操作 </font>
+    </h2>
+    <p class="Preformatted" style="margin-bottom: 1px; margin-top: 1px; font-family: Courier New, Courier, monospace; font-size: 14.4px; color: rgb(0, 0, 0); line-height: normal; white-space: nowrap; background-color: rgb(238, 238, 238); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px">
+      <font size="3">IF (PE=0) OR (PE=1 AND ((VM=0) OR (VM=1 AND IOPL=3)))<br size="3"/>(* Real-Address Mode, Protected mode, or Virtual-8086 mode with IOPL equal to 3 *)<br size="3"/>THEN<br size="3"/>IF OperandSize <img src="http://www.hgy413.com/hgydocs/IA32/instruct32_hh/arrwleft.gif" width="13px" height="16px" border="0" class="img_whs3" size="3" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px"/> 32<br size="3"/>THEN <br size="3"/>push(EFLAGS AND 00FCFFFFH);<br size="3"/>(* VM and RF EFLAG bits are cleared in image stored on the stack*)<br size="3"/>ELSE <br size="3"/>push(EFLAGS); (* Lower 16 bits only *)<br size="3"/>FI;<br size="3"/>ELSE (* In Virtual-8086 Mode with IOPL less than 0 *)<br size="3"/>#GP(0); (* Trap to virtual-8086 monitor *)<br size="3"/>FI; </font>
+    </p>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">影响的标志 </font>
+    </h2>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">无。 </font>
+    </p>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">保护模式异常 </font>
+    </h2>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">#SS(0) - 如果 ESP 寄存器超出堆栈段的边界。 </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">#PF(错误代码) - 如果发生页错误。 </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">#AC(0) - 如果在当前特权级别为 3 且启用对齐检查的情况下进行未对齐的内存引用。 </font>
+    </p>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">实地址模式异常 </font>
+    </h2>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">无。 </font>
+    </p>
+    <h2 style="color: rgb(0, 51, 255); margin-top: 0; margin-bottom: 1px; font-size: 17.28px; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-weight: bold; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">虚 8086 模式异常 </font>
+    </h2>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">#GP(0) - 如果 I/O 特权级别小于 3。 </font>
+    </p>
+    <p style="margin-bottom: 0; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">#PF(错误代码) - 如果发生页错误。 </font>
+    </p>
+    <p class="whs4" style="margin-bottom: 0px; margin-top: 0; font-family: Tahoma, Verdana, Arial, Helvetica, MS Sans Serif; font-size: 12.96px; color: rgb(0, 0, 0); font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px">
+      <font size="3">#AC(0) - 如果在启用对齐检查的情况下进行未对齐的内存引用</font>
+    </p>
+  </div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67509&quot;)" id="imgN67509"/><a id="FMID_1047289750FM"/><div class="nodecontent">EFLAGS介绍</div><div class="content" id="N67509"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1540064533FM"/><div class="nodecontent">
+    <p>
+      https://blog.csdn.net/jn1158359135/article/details/7761011
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      -------------------------------------------------
+    </p>
+    <p>
+      EFLAGS寄存器对于操作系统则重要得多。
+    </p>
+    <p>
+      EFLAGS(program status and control) register主要用于提供程序的状态及进行相应的控制， 【The EFLGAS register report on the status of the program being executed and allows limited(application-program level) control of the process.】
+    </p>
+    <p>
+      在64-bit模式下，EFLGAS寄存器被扩展为64位的RFLGAS寄存器，高32位被保留，而低32位则与EFLAGS寄存器相同。
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      32位的EFLAGS寄存器包含一组状态标志、系统标志以及一个控制标志。
+    </p>
+    <p>
+      在x86处理器初始化之后，EFLAGS寄存器的状态值为0000 0002H。第1、3、5、15以及22到31位均被保留，这个寄存器中的有些标志通过使用特殊的通用指令可以直接被修改，但并没有指令能够检查或者修改整个寄存器。通过使用LAHF/SAHF/PUSHF/POPF/POPFD等指令，可以将EFLAGS寄存器的标志位成组移到程序栈或EAX寄存器，或者从这些设施中将操作后的结果保存到EFLAGS寄存器中。在EFLAGS寄存器的内容被传送到栈或是EAX寄存器后，可以通过位操作指令(BT, BTS, BTR, BTC)检查或修改这些标志位。当调用中断或异常处理程序时，处理器将在程序栈上自动保存EFLAGS的状态值。若在中断或异常处理时发生任务切换，那么EFLAGS寄存器的状态将被保存在TSS中 【the state of the EFLAGS register is saved in the TSS for the task being suspended.】 ，注意是将要被挂起的本次任务的状态。
+    </p>
+  </div></div></div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67566&quot;)" id="imgN67566"/><a id="FMID_182374800FM"/><div class="nodecontent">push dword ptr ds:[ebx+0x34]</div><div class="content" id="N67566"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67573&quot;)" id="imgN67573"/><a id="FMID_261372032FM"/><div class="nodecontent">x ptr 介绍</div><div class="content" id="N67573"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_747654040FM"/><div class="nodecontent">
+    <p>
+      https://blog.csdn.net/GaryZhang29/article/details/2439504
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      8.5 指令要处理的数据有多长？
+    </p>
+    <p>
+      8086CPU的指令，可以处理两种尺寸的数据，byte和word。所以<b><font color="#006633">在机器指令中要指明，指令进行的是字操作还是字节操作</font></b>。对于这个问题，汇编语言中用一下方法处理。
+    </p>
+    <p>
+      （1）通过寄存器名指明要处理的数据的尺寸。
+    </p>
+    <p>
+      例如：
+    </p>
+    <p>
+      下面的指令中，寄存器指明了指令进行的是字操作是字操作：
+    </p>
+    <p>
+      mov ax,1
+    </p>
+    <p>
+      mov bx,ds:[0]
+    </p>
+    <p>
+      mov ds,ax
+    </p>
+    <p>
+      mov ds:[0],ax
+    </p>
+    <p>
+      inc ax
+    </p>
+    <p>
+      add ax,1000
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      下面的指令中，寄存器指明了指令进行的是<b><font color="#006633">字节操作</font></b>：
+    </p>
+    <p>
+      mov al,1
+    </p>
+    <p>
+      mov al,bl
+    </p>
+    <p>
+      mov al,ds:[0]
+    </p>
+    <p>
+      mov ds:[0],al
+    </p>
+    <p>
+      inc al
+    </p>
+    <p>
+      add al,100
+    </p>
+    <p>
+      (2)<b><font color="#003333">在没有寄存器名存在的情况下，用操作符 X ptr 指明内存单元的长度，X在汇编指令中可以为word或byte</font></b>。
+    </p>
+    <p>
+      例如：
+    </p>
+    <p>
+      下面的指令中，用word ptr 指明了指令访问的内存单元是一个字单元：
+    </p>
+    <p>
+      mov word ptr ds:[0],1
+    </p>
+    <p>
+      inc word ptr [bx]
+    </p>
+    <p>
+      inc word ptr ds:[0]
+    </p>
+    <p>
+      add word ptr [bx],2
+    </p>
+    <p>
+      下面的指令中，用byte ptr 指明了指令访问的内存单元是一个字单元：
+    </p>
+    <p>
+      mov byte ptr ds:[0],1
+    </p>
+    <p>
+      inc byte ptr [bx]
+    </p>
+    <p>
+      inc byte ptr ds:[0]
+    </p>
+    <p>
+      add byte ptr [bx],2
+    </p>
+    <p>
+        在没有寄存器参与的内存单元访问指令中，用word prt 或byte ptr 显性地指明所要访问的内存单元的长度是很必要的。否则，CPU无法得知所要访问的单元，还是字节单元。
+    </p>
+    <p>
+      假如我们用Debug查看内存的结果如下：
+    </p>
+    <p>
+      2000：1000 FF FF FF FF FF FF ......
+    </p>
+    <p>
+      那么指令：
+    </p>
+    <p>
+      mov ax,2000H
+    </p>
+    <p>
+      mov ds,ax
+    </p>
+    <p>
+      mov byte ptr [1000H],1
+    </p>
+    <p>
+      将使内存中的内容变为：
+    </p>
+    <p>
+      2000: 1000 01 FF FF FF FF FF ......
+    </p>
+    <p>
+      而指令：
+    </p>
+    <p>
+      mov ax,2000H
+    </p>
+    <p>
+      mov ds,ax
+    </p>
+    <p>
+      mov word ptr [1000H],1
+    </p>
+    <p>
+      将使内存中的内容变为：
+    </p>
+    <p>
+      2000：1000 01 00 FF FF FF FF ......
+    </p>
+    <p>
+        这是因为 mov byte ptr [1000H],1访问的是地址为 ds:1000H 的字节单元，修改的是ds:1000H 单元的内容；而mov word ptr [1000H],1 访问的是地址为 ds:1000H 的字单元，修改的是 ds:1000H 和 ds:1001H 两个单元的内容。
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      （3） 其他方法
+    </p>
+    <p>
+        有些指令默认了访问的是字单元还是字节单元，比如：push [1000H] 就不用指明访问的是字单元还是字节单元，因为push指令只进行字操作。
+    </p>
+    <p>
+      【popexizhi: 这里的新问题那 push dword ptr ds:[eax + 0x34] 的dword又有什么用呢?】
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67771&quot;)" id="imgN67771"/><a id="FMID_1357383144FM"/><div class="nodecontent">push dword ptr ...</div><div class="content" id="N67771"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1430210234FM"/><div class="nodecontent">
+    <p>
+      https://stackoverflow.com/questions/21595357/what-does-push-dword-ptr-eax22-mean
+    </p>
+    <p>
+      
+    </p>
+    <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-style: none; border-top-width: 0px; border-right-style: none; border-right-width: 0px; border-bottom-style: none; border-bottom-width: 0px; border-left-style: none; border-left-width: 0px; font-style: normal; font-weight: 400; line-height: inherit; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)">
+      The <code style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 1px; padding-bottom: 1px; padding-right: 5px; padding-left: 5px; border-top-style: none; border-top-width: 0px; border-right-style: none; border-right-width: 0px; border-bottom-style: none; border-bottom-width: 0px; border-left-style: none; border-left-width: 0px; font-style: inherit; font-variant: inherit; font-weight: normal; line-height: inherit; font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif; font-size: 13px; vertical-align: baseline; background-color: rgb(239, 240, 241); white-space: pre-wrap"><font face="Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif" size="13px">push</font></code> instruction, much like many other x86 instructions, can take a variety of operands: immediate values, registers, and memory addresses:
+    </p>
+    <pre style="margin-top: 0px; margin-right: 0px; margin-bottom: 0; margin-left: 0px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-top-style: none; border-top-width: 0px; border-right-style: none; border-right-width: 0px; border-bottom-style: none; border-bottom-width: 0px; border-left-style: none; border-left-width: 0px; font-style: normal; font-weight: 400; line-height: inherit; font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif; font-size: 13px; vertical-align: baseline; background-color: rgb(239, 240, 241); color: rgb(36, 39, 41); letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; word-spacing: 0px"><code style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-style: none; border-top-width: 0px; border-right-style: none; border-right-width: 0px; border-bottom-style: none; border-bottom-width: 0px; border-left-style: none; border-left-width: 0px; font-style: inherit; font-variant: inherit; font-weight: normal; line-height: inherit; font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif; font-size: 13px; vertical-align: baseline; background-color: rgb(239, 240, 241); white-space: inherit"><font face="Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif" size="13px">push 10                 ; pushes the value 10 (32 bits in 32-bit mode)
+push eax                ; pushes the contents of the 32-bit register eax
+push DWORD [ebx + 42]   ; pushes 32 bits from the memory location ebx + 42</font></code></pre>
+    <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-style: none; border-top-width: 0px; border-right-style: none; border-right-width: 0px; border-bottom-style: none; border-bottom-width: 0px; border-left-style: none; border-left-width: 0px; font-style: normal; font-weight: 400; line-height: inherit; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; font-size: 15px; vertical-align: baseline; clear: both; color: rgb(36, 39, 41); letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)">
+      The register form infers the size from the size of the register. The memory form needs to have the size specified (e.g. here shown in Intel syntax). For immediate values, the operand size is either 16 or 32 bits; the current mode is default, and the other size can be explicitly selected (e.g. <code style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 1px; padding-bottom: 1px; padding-right: 5px; padding-left: 5px; border-top-style: none; border-top-width: 0px; border-right-style: none; border-right-width: 0px; border-bottom-style: none; border-bottom-width: 0px; border-left-style: none; border-left-width: 0px; font-style: inherit; font-variant: inherit; font-weight: normal; line-height: inherit; font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif; font-size: 13px; vertical-align: baseline; background-color: rgb(239, 240, 241); white-space: pre-wrap"><font face="Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif" size="13px">push WORD 10</font></code> in 32-bit mode).
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      [popexizhi: ok，这里很完美的回答了上面的问题，push dword ptr ds:[ebx+0x30] 解释为将ds:[ebx + 0x30] 中所指向的32的内存地址push了]
+    </p>
+  </div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67839&quot;)" id="imgN67839"/><a id="FMID_1241388329FM"/><div class="nodecontent">xchg eax, [esp + 0x24]</div><div class="content" id="N67839"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67845&quot;)" id="imgN67845"/><a id="FMID_1212108368FM"/><div class="nodecontent">xchg</div><div class="content" id="N67845"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_91240001FM"/><div class="nodecontent">
+    <p>
+      https://baike.baidu.com/item/XCHG
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      交换指令XCHG是两个寄存器，寄存器和内存变量之间内容的交换指令，两个操作数的数据类型要相同，可以是一个字节，也可以是一个字，也可以是双字
+    </p>
+  </div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_996857683FM"/><div class="nodecontent"/></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67884&quot;)" id="imgN67884"/><a id="FMID_1341386784FM"/><div class="nodecontent">esp+0x24 如何计算到push eax 的位置</div><div class="content" id="N67884"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N67890&quot;)" id="imgN67890"/><a id="FMID_1761753218FM"/><div class="nodecontent">堆栈平衡</div><div class="content" id="N67890"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_312537979FM"/><div class="nodecontent">
+    <p>
+      https://www.jianshu.com/p/594357dff57e
+    </p>
+    <div>
+      <div>
+        <h3>
+          堆栈平衡方式
+        </h3>
+        <p>
+          因为函数调用过程中，参数需要压栈，所以在函数调用结束后，用于函数调用的压栈参数也需要退栈。那这个工作是交给调用者完成，还是在函数内部自己完成？其实两种都可以。调用者负责平衡堆栈的主要好处是可以实现可变参数（关于可变参数的话题，在此不做过多讨论。如果可能的话，我们可以以一篇单独的文章来讲这个问题），因为在参数可变的情况下，只有调用者才知道具体的压栈参数有几个。<br/>下面列出了常见调用约定的堆栈平衡方式：
+        </p>
+        <table>
+          <tr>
+            <th>
+              调用约定
+            </th>
+            <th>
+              堆栈平衡方式
+            </th>
+          </tr>
+          <tr>
+            <td>
+              __stdcall
+            </td>
+            <td>
+              函数自己平衡
+            </td>
+          </tr>
+          <tr>
+            <td>
+              __cdecl
+            </td>
+            <td>
+              调用者负责平衡
+            </td>
+          </tr>
+          <tr>
+            <td>
+              __thiscall
+            </td>
+            <td>
+              调用者负责平衡
+            </td>
+          </tr>
+          <tr>
+            <td>
+              __fastcall
+            </td>
+            <td>
+              调用者负责平衡
+            </td>
+          </tr>
+          <tr>
+            <td>
+              __naked
+            </td>
+            <td>
+              编译器不负责平衡，由编写者自己负责
+            </td>
+          </tr>
+        </table>
+        <h2>
+          2.4. 栈帧的概念：从esp和ebp说起
+        </h2>
+        <p>
+          为什么我们需要ebp和esp2个寄存器来访问栈？这种观念其实来自于函数的层级调用：函数A调用函数B，函数B调用函数C，函数C调用函数D...<br/>这种调用可能会涉及非常多的层次。编译器需要保证在这种复杂的嵌套调用中，能够正确地处理每个函数调用的堆栈平衡。所以我们引入了2个寄存器：
+        </p>
+        <ol>
+          <li>
+            ebp指向了本次函数调用开始时的栈顶指针，它也是本次函数调用时的“栈底”（这里的意思是，在一次函数调用中，ebp向下是函数的临时变量使用的空间）。在函数调用开始时，我们会使用
+          </li>
+        </ol>
+        <pre class="hljs undefined"><code class="asm">mov ebp,esp </code></pre>
+        <p>
+          把当前的esp保存在ebp中。
+        </p>
+        <ol start="2">
+          <li>
+            esp，它指向当前的栈顶，它是动态变化的，随着我们申请更多的临时变量，esp值不断减小（正如前文所说，栈是<strong>向下生长</strong>的）。
+          </li>
+          <li>
+            函数调用结束，我们使用
+          </li>
+        </ol>
+        <pre class="hljs undefined"><code class="asm">mov esp,ebp</code></pre>
+        <p>
+          来还原之前保存的esp。<br/>在函数调用过程中，ebp和esp之间的空间被称为本次函数调用的“栈帧”。函数调用结束后，处于栈帧之前的所有内容都是本次函数调用过程中分配的临时变量，都需要被“返还”。这样在概念上，给了函数调用一个更明显的分界。下图是一个程序运行的某一时刻的栈帧图：
+        </p>
+        <div class="image-package">
+          <div class="image-container">
+            <div class="image-container-fill" style="padding-bottom: 150.0%">
+              
+            </div>
+          </div>
+        </div>
+        <h1>
+          3. 汇编中关于“函数调用”的实现
+        </h1>
+        <p>
+          上面铺陈了很多的汇编层面的概念后，我们终于可以切回到我们本次的主题：<strong>函数调用</strong>。<br/>函数调用其实可以看做4个过程，也就是本篇标题：
+        </p>
+        <ol>
+          <li>
+            压栈: 函数参数压栈，返回地址压栈
+          </li>
+          <li>
+            跳转: 跳转到函数所在代码处执行
+          </li>
+          <li>
+            执行: 执行函数代码
+          </li>
+          <li>
+            返回: 平衡堆栈，找出之前的返回地址，跳转回之前的调用点之后，完成函数调用
+          </li>
+        </ol>
+      </div>
+      <br/>
+      <br/>
+      
+    </div>
+  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1795812777FM"/><div class="nodecontent">而这里的call是内部堆栈平衡的所以计算之前的eax的地址，就是栈底+ pushad （0x20)+pushfd(0x04) </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68086&quot;)" id="imgN68086"/><a id="FMID_1547902739FM"/><div class="nodecontent">esp/eip/ebp</div><div class="content" id="N68086"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1792537327FM"/><div class="nodecontent">
+    <p>
+      https://www.jianshu.com/p/0299f56edab5
+    </p>
+    <div>
+      <div>
+        <p>
+          <code>rip</code> 指令地址寄存器，用来存储 CPU 即将要执行的指令地址。每次 CPU 执行完相应的汇编指令之后，<code>rip</code>  寄存器的值就会自行累加；<code>rip</code>  无法直接赋值，<code>call, ret, jmp</code> 等指令可以修改 <code>rip</code>。
+        </p>
+        <p>
+          <code>rbp</code> 栈基地址寄存器，保存当前帧的栈底地址。
+        </p>
+        <p>
+          <code>rsp</code> 栈指针寄存器，保存当前栈顶。
+        </p>
+        <p>
+          栈帧中，最重要的是帧指针 <code>rbp</code>  和栈指针 <code>rsp</code>，有了这两个指针，我们就可以刻画一个完整的栈帧。
+        </p>
+      </div>
+      <br/>
+      
+    </div>
+  </div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_504890075FM"/><div class="nodecontent">
+    <p>
+      http://blog.sina.com.cn/s/blog_4ba5b45e0102dugy.html
+    </p>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <font size="3">1.EIP </font>
+    </div>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <font size="3">2.ESP </font>
+    </div>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <font size="3">3.EBP </font>
+    </div>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <font color="#FF0000" size="3">1.EIP寄存器里存储的是CPU下次要执行的指令的地址</font><font size="3">。 </font>
+    </div>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <font size="3">也就是调用完fun函数后，让CPU知道应该执行main函数中的printf（"函数调用结束"）语句了。 </font>
+    </div>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <font size="3">2.</font><font color="#FF0000" size="3">EBP寄存器里存储的是是栈的栈底指针，通常叫栈基址</font><font size="3">，这个是一开始进行fun()函数调用之前，由ESP传递给EBP的。（在函数调用前你可以这么理解：ESP存储的是栈顶地址，也是栈底地址。） </font>
+    </div>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <font size="3">3.</font><font color="#FF0000" size="3">ESP寄存器里存储的是在调用函数fun()之后，栈的栈顶</font><font size="3">。并且始终指向栈顶。 </font>
+    </div>
+    <div style="color: rgb(50, 62, 50); font-family: simsun; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(245, 245, 199)">
+      <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 5px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-style: none; border-top-width: 0px; border-right-style: none; border-right-width: 0px; border-bottom-style: none; border-bottom-width: 0px; border-left-style: none; border-left-width: 0px; list-style: none; line-height: 21px">
+        <font color="#FF0000" size="3">堆栈</font><font size="3">是一种简单的数据结构，是一种只允许在其一端进行插入或删除的线性表。<br size="3"/>允许插入或删除操作的一端称为<strong style="font-weight: bold"><b>栈顶</b></strong>，另一端称为<strong style="font-weight: bold"><b>栈底</b></strong>，对堆栈的插入和删除操作被称<strong style="font-weight: bold"><b>入栈</b></strong>和<strong style="font-weight: bold"><b>出栈</b></strong>。<br size="3"/><br size="3"/>有一组CPU指令可以实现对进程的内存实现堆栈访问。其中，<strong style="font-weight: bold"><b>POP</b></strong>指令实现<strong style="font-weight: bold"><b>出栈</b></strong>操作，<strong style="font-weight: bold"><b>PUSH</b></strong>指令实现<strong style="font-weight: bold"><b>入栈</b></strong>操作。<br size="3"/><br size="3"/>CPU的<strong style="font-weight: bold"><b>ESP</b></strong>寄存器存放</font><font color="#FF0000" size="3">当前线程的栈顶指针</font><font size="3">，<br size="3"/><br size="3"/><strong style="font-weight: bold"><b>EBP</b></strong>寄存器中保存</font><font color="#FF0000" size="3">当前线程的栈底指针</font><font size="3">。<br size="3"/><br size="3"/>CPU的<strong style="font-weight: bold"><b>EIP</b></strong>寄存器存放</font><font color="#FF0000" size="3">下一个CPU指令存放的内存地址</font><font size="3">，当CPU执行完当前的指令后，从EIP寄存器中读取下一条指令的内存地址，然后继续执行。 </font>
+      </p>
+    </div>
+  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68369&quot;)" id="imgN68369"/><a id="FMID_42606057FM"/><div class="nodecontent">retn</div><div class="content" id="N68369"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_108338131FM"/><div class="nodecontent">
+    <p>
+      https://blog.csdn.net/cyousui/article/details/8565219
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      <font color="rgb(51, 51, 51)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif, SimHei, SimSun" size="3">按照前面讲CALL指令举的那个例子，CALL指令是进入子程序的指令，而例子中所说的跳出子程序这一过程也需要2条指令，它们是RETN/RETF。<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　 RETN/RETF是跳出子程序的指令，被称为返回指令。RETN指令用于从段内转移CALL进的子程序中返回；RETF指令用于从段间转移CALL进的子程序中返回。<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　RETN/RETF在反汇编代码中呈现的形式如下：<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　RETN<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　　RETN   操作数1<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　RETF<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　　RETF   操作数1<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　</font><font face="Microsoft YaHei, SF Pro Display, Roboto, Noto, Arial, PingFang SC, sans-serif" size="3" color="rgb(255, 0, 0)">RETN等价于一条指令：POP   eip</font><font color="rgb(51, 51, 51)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif, SimHei, SimSun" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　</font><font face="Microsoft YaHei, SF Pro Display, Roboto, Noto, Arial, PingFang SC, sans-serif" size="3" color="rgb(0, 0, 153)">RETF等价于两条指令：<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　POP   eip<br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　　POP   CS</font><font color="rgb(51, 51, 51)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif, SimHei, SimSun" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/>　 　而带有操作数的RETN/RETF指令则是在POP之后，执行ESP=ESP+操作数1。</font>
+    </p>
+  </div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68483&quot;)" id="imgN68483"/><a id="FMID_717229796FM"/><div class="nodecontent">附带code分析</div><div class="content" id="N68483"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68489&quot;)" id="imgN68489"/><a id="FMID_1787396330FM"/><div class="nodecontent">ps:</div><div class="content" id="N68489"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68495&quot;)" id="imgN68495"/><a id="FMID_1086801998FM"/><div class="nodecontent">ASLR</div><div class="content" id="N68495"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1010335561FM"/><div class="nodecontent">
+    <p>
+      https://blog.csdn.net/forevertingting/article/details/77073833
+    </p>
+    <h3 id="aslraddress-space-layout-randomization" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; margin-top: 8px; margin-right: 0px; margin-bottom: 16px; margin-left: 0px; font-size: 22px; font-family: Microsoft YaHei, SF Pro Display, Roboto, Noto, Arial, PingFang SC, sans-serif; color: rgb(79, 79, 79); font-weight: 700; line-height: 30px; font-style: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)">
+      ASLR(Address space layout randomization)
+    </h3>
+    <p>
+      是一种针对缓冲区溢出的安全保护技术，通过对堆、栈、共享库映射等线性区布局的随机化，通过增加攻击者预测目的地址的难度，防止攻击者直接定位攻击代码位置，达到阻止溢出攻击的目的。如今Linux、FreeBSD、Windows等主流操作系统都已采用了该技术。（虚拟地址）此技术需要操作系统和软件相配合。PE头文件中会设置 IMAGE_DLL_CHARACTERISTICS_DYNAMIC_BASE标示来说明其支持 ASLR
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      在linux中使用此技术后，杀死某程序后重新开启，地址换）
+    </p>
+    <p>
+      在windows中使用此技术后，杀死进程后重新开启地址不换，重启才会改变。
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      影响部分
+    </p>
+    <p>
+      ASLR所影响的部分有
+    </p>
+    <p>
+      - 模块随即化：OD打开进程-〉查看-〉可执行模块，基地址在系统重启的时候会变化　
+    </p>
+    <p>
+      - 堆栈随即化，堆栈基地址会变化，进而导致内存中的变量会发生变化
+    </p>
+    <p>
+      - PEB/TEB随机化（不用固定的地址去获取ＰＥＢ，ＴＥＢ，用ＦＳ寄存器获取）
+    </p>
+    <p>
+      
+    </p>
+  </div></div></div></div></div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68564&quot;)" id="imgN68564"/><a id="FMID_1958992368FM"/><div class="nodecontent">list_try</div><div class="content" id="N68564"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68571&quot;)" id="imgN68571"/><a id="FMID_1612683797FM"/><div class="nodecontent">elf-ida try</div><div class="content" id="N68571"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_229156192FM"/><div class="nodecontent">https://blog.csdn.net/ShellDawn/article/details/68949065</div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68583&quot;)" id="imgN68583"/><a id="FMID_1402222990FM"/><div class="nodecontent">eip的类比</div><div class="content" id="N68583"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68589&quot;)" id="imgN68589"/><a id="FMID_1016225605FM"/><div class="nodecontent">esp/eip在linux的堆栈中使用</div><div class="content" id="N68589"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68595&quot;)" id="imgN68595"/><a id="FMID_1259359308FM"/><div class="nodecontent">
+    <p>
+      [read] https://blog.csdn.net/u011089570/article/details/37825793
+    </p>
+    <p>
+      [next]
+    </p>
+    <p>
+      当前objdump_D.log中next 分析代码
+    </p>
+    <p>
+      
+    </p>
+  </div><div class="content" id="N68595"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68623&quot;)" id="imgN68623"/><a id="FMID_639693646FM"/><div class="nodecontent">list</div><div class="content" id="N68623"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68629&quot;)" id="imgN68629"/><a id="FMID_495291908FM"/><div class="nodecontent">main</div><div class="content" id="N68629"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_907240366FM"/><div class="nodecontent">
+    <p>
+      293 00000000004004f9 &lt;main&gt;:                        
+    </p>
+    <p>
+      294   4004f9:   55                      push   %rbp   //ebp-&gt;rbp: 86-&gt;64, 保存之前的栈基地址入栈
+    </p>
+    <p>
+      295   4004fa:   48 89 e5                mov    %rsp,%rbp //将当前的栈底地址存储到 栈底地址位置
+    </p>
+    <p>
+      296   4004fd:   48 83 ec 10             sub    $0x10,%rsp  //局部变量tmp 实际只需要4字节 分配了16字节 和优&gt;    化有关  16字节对齐 [popexizhi: 这个不是特别理解why 4个字节就ok?]
+    </p>
+    <p>
+      297   400501:   c7 45 fc 01 00 00 00    movl   $0x1,-0x4(%rbp) // 将a赋值 ，这个是通过栈基地址赋值的
+    </p>
+    <p>
+      298   400508:   c7 45 f8 02 00 00 00    movl   $0x2,-0x8(%rbp) // 同上，这里补充一下，-0x4 到 -Ox8 是int决&gt;    定的, 测试一个long int去, 这里变成-0x8 -&gt; -0x10 这个ok
+    </p>
+    <p>
+      299   40050f:   48 8d 55 f8             lea    -0x8(%rbp),%rdx  //对-0x8(%rbp)取&amp;(load effective address),&gt;    放到%rdx
+    </p>
+    <p>
+      300   400513:   48 8d 45 fc             lea    -0x4(%rbp),%rax  //&amp;a    
+    </p>
+    <p>
+      301   400517:   48 89 d6                mov    %rdx,%rsi  //%rsi, frist 参数, 从右向左, &amp;b
+    </p>
+    <p>
+      302   40051a:   48 89 c7                mov    %rax,%rdi  //%rdi, Sec   
+    </p>
+    <p>
+      303   40051d:   e8 ab ff ff ff          callq  4004cd &lt;swap&gt; //call swap 了,相当于pushq %rip ; jmpq addr
+    </p>
+    <p>
+      304   400522:   c9                      leaveq  //leaveq相当于：        
+    </p>
+    <p>
+      305                                             //movq %rbp, %rsp       
+    </p>
+    <p>
+      306                                             //popq %rbp             
+    </p>
+    <p>
+      307                                             //leaveq跟函数进入时的如下操作是对应的：push   %rbp; mov        %rsp,%rbp
+    </p>
+    <p>
+      308                                                 
+    </p>
+    <p>
+      309   400523:   c3                      retq   //[?] main why返回了两次 
+    </p>
+    <p>
+      310   400524:   66 2e 0f 1f 84 00 00    nopw   %cs:0x0(%rax,%rax,1)//[next]
+    </p>
+    <p>
+      311   40052b:   00 00 00                            
+    </p>
+    <p>
+      312   40052e:   66 90                   xchg   %ax,%ax
+    </p>
+    <p>
+      313                                   
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68716&quot;)" id="imgN68716"/><a id="FMID_333923523FM"/><div class="nodecontent">swap</div><div class="content" id="N68716"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1611369354FM"/><div class="nodecontent">
+    <p>
+      273 00000000004004cd &lt;swap&gt;:
+    </p>
+    <p>
+      274   4004cd:   55                      push   %rbp // 之前的栈基地址 入栈
+    </p>
+    <p>
+      275   4004ce:   48 89 e5                mov    %rsp,%rbp //设置新的基地址
+    </p>
+    <p>
+      276   4004d1:   48 89 7d e8             mov    %rdi,-0x18(%rbp) //Fri 参数,放到-18+rbp中[why] -18,0-~17的位
+    </p>
+    <p>
+          置是做什么的预留呢?
+    </p>
+    <p>
+      277   4004d5:   48 89 75 e0             mov    %rsi,-0x20(%rbp) //Sec 参数 ,问题同上
+    </p>
+    <p>
+      278   4004d9:   48 8b 45 e8             mov    -0x18(%rbp),%rax //将a的地址mv到rax
+    </p>
+    <p>
+      279   4004dd:   8b 00                   mov    (%rax),%eax //将rax中的内容mv到eax,即a mv eax
+    </p>
+    <p>
+      280   4004df:   89 45 fc                mov    %eax,-0x4(%rbp) //将eax的内容放到-0x4(%rbp),这个是tmp的操作,    即a mv tmp
+    </p>
+    <p>
+      281   // ida的注释是"Two special fields " r" and " s" represent return address and saved registers."[go]
+    </p>
+    <p>
+      282   4004e2:   48 8b 45 e0             mov    -0x20(%rbp),%rax //将b地址mv到rax
+    </p>
+    <p>
+      283   4004e6:   8b 10                   mov    (%rax),%edx  //将rax中的内容mv到rax,即b的内容存放edx
+    </p>
+    <p>
+      284   4004e8:   48 8b 45 e8             mov    -0x18(%rbp),%rax //将-18+rbp中的Fri参数,到rax
+    </p>
+    <p>
+      285   4004ec:   89 10                   mov    %edx,(%rax) //b的内容放到第一个参数的地址中
+    </p>
+    <p>
+      286   4004ee:   48 8b 45 e0             mov    -0x20(%rbp),%rax//sec 参数到rax
+    </p>
+    <p>
+      287   4004f2:   8b 55 fc                mov    -0x4(%rbp),%edx //a mv edx
+    </p>
+    <p>
+      288   4004f5:   89 10                   mov    %edx,(%rax) // a mv到sec 参数地址
+    </p>
+    <p>
+      289                                                                    
+    </p>
+    <p>
+      290   4004f7:   5d                      pop    %rbp //rbp出栈,         
+    </p>
+    <p>
+      291   4004f8:   c3                      retq        //返回调用位置, ==popq %rip
+    </p>
+  </div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68802&quot;)" id="imgN68802"/><a id="FMID_1150954414FM"/><div class="nodecontent">ana</div><div class="content" id="N68802"><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N68808&quot;)" id="imgN68808"/><a id="FMID_1551108852FM"/><div class="nodecontent">
+    <p>
+      
+    </p>
+    <p>
+      1. http://ju.outofmemory.cn/entry/769
+    </p>
+    <p>
+      <font color="rgb(0, 0, 0)" face="Helvetica Neue, Helvetica, STHeiTi, Microsoft YaHei" size="3">X86-64中，所有寄存器都是64位，相对32位的x86来说，标识符发生了变化，比如：从原来的%ebp变成了%rbp。为了向后兼容性，%ebp依然可以使用，不过指向了%rbp的低32位。</font>
+    </p>
+  </div><div class="content" id="N68808"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1447881809FM"/><div class="nodecontent">
+    <p>
+      https://www.jianshu.com/p/0299f56edab5
+    </p>
+    <p>
+      <font color="rgb(47, 47, 47)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif" size="3">x86-64中，所有寄存器都是64位，相对32位的x86来说，标识符发生了变化，比如：从原来的 </font><code style="font-family: Menlo, Monaco, Consolas, Courier New, monospace; font-size: 13px; color: rgb(199, 37, 78); background-color: rgb(246, 246, 246); padding-top: 2px; padding-bottom: 2px; padding-right: 4px; padding-left: 4px; border-top-style: none; border-top-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium; border-left-style: none; border-left-width: medium; white-space: pre-wrap; vertical-align: middle; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><font face="Menlo, Monaco, Consolas, Courier New, monospace" size="3" color="rgb(199, 37, 78)">%ebp</font></code><font color="rgb(47, 47, 47)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif" size="3"> 变成了 </font><code style="font-family: Menlo, Monaco, Consolas, Courier New, monospace; font-size: 13px; color: rgb(199, 37, 78); background-color: rgb(246, 246, 246); padding-top: 2px; padding-bottom: 2px; padding-right: 4px; padding-left: 4px; border-top-style: none; border-top-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium; border-left-style: none; border-left-width: medium; white-space: pre-wrap; vertical-align: middle; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><font face="Menlo, Monaco, Consolas, Courier New, monospace" size="3" color="rgb(199, 37, 78)">%rbp</font></code><font color="rgb(47, 47, 47)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif" size="3">。为了向后兼容性，</font><code style="font-family: Menlo, Monaco, Consolas, Courier New, monospace; font-size: 13px; color: rgb(199, 37, 78); background-color: rgb(246, 246, 246); padding-top: 2px; padding-bottom: 2px; padding-right: 4px; padding-left: 4px; border-top-style: none; border-top-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium; border-left-style: none; border-left-width: medium; white-space: pre-wrap; vertical-align: middle; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><font face="Menlo, Monaco, Consolas, Courier New, monospace" size="3" color="rgb(199, 37, 78)">%ebp</font></code><font color="rgb(47, 47, 47)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif" size="3"> 依然可以使用，不过指向了 </font><code style="font-family: Menlo, Monaco, Consolas, Courier New, monospace; font-size: 13px; color: rgb(199, 37, 78); background-color: rgb(246, 246, 246); padding-top: 2px; padding-bottom: 2px; padding-right: 4px; padding-left: 4px; border-top-style: none; border-top-width: medium; border-right-style: none; border-right-width: medium; border-bottom-style: none; border-bottom-width: medium; border-left-style: none; border-left-width: medium; white-space: pre-wrap; vertical-align: middle; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px"><font face="Menlo, Monaco, Consolas, Courier New, monospace" size="3" color="rgb(199, 37, 78)">%rbp</font></code><font color="rgb(47, 47, 47)" face="-apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif" size="3"> 的低32位。</font>
+    </p>
+    <p>
+      <img src="../../../../../../C:/Users/test/Pictures/blog/rsp_esp.jpg"/>
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1261544713FM"/><div class="nodecontent">
+    <p>
+      3. long int的实验效果
+    </p>
+    <p>
+      293 00000000004004ff &lt;main&gt;:                                  
+    </p>
+    <p>
+      294   4004ff:   55                      push   %rbp           
+    </p>
+    <p>
+      295   400500:   48 89 e5                mov    %rsp,%rbp      
+    </p>
+    <p>
+      296   400503:   48 83 ec 10             sub    $0x10,%rsp     
+    </p>
+    <p>
+      297   400507:   48 c7 45 f8 01 00 00    movq   $0x1,-0x8(%rbp)
+    </p>
+    <p>
+      298   40050e:   00                                            
+    </p>
+    <p>
+      299   40050f:   48 c7 45 f0 02 00 00    movq   $0x2,-0x10(%rbp)
+    </p>
+    <p>
+      300   400516:   00                                            
+    </p>
+    <p>
+      301   400517:   48 8d 55 f0             lea    -0x10(%rbp),%rdx
+    </p>
+    <p>
+      302   40051b:   48 8d 45 f8             lea    -0x8(%rbp),%rax
+    </p>
+  </div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_883214589FM"/><div class="nodecontent">
+    <p>
+      4.lea
+    </p>
+    <p>
+      https://blog.csdn.net/robbie1314/article/details/6319184
+    </p>
+    <p>
+      <font color="rgb(79, 79, 79)" face="Microsoft YaHei, SF Pro Display, Roboto, Noto, Arial, PingFang SC, sans-serif" size="3">lea, load effective address, 加载有效地址. 指令形式是从存储器读数据到寄存器, 效果是将存储器的有效地址写入到目的操作数, 简单说, 就是C语言中的”&amp;”</font>
+    </p>
+  </div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N69006&quot;)" id="imgN69006"/><a id="FMID_368231545FM"/><div class="nodecontent">leaveq&amp;&amp;retq</div><div class="content" id="N69006"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1577174507FM"/><div class="nodecontent">
+    <p>
+      <font size="3">https://blog.csdn.net/linuxheik/article/details/49277041 </font>
+    </p>
+    <p>
+      <font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">在函数退出时，为啥没有看到恢复RBP和RSP指令呢？</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">答案是用了leaveq指令：</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">leaveq和retq中的q是指64位操作数。</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">leaveq相当于：</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">movq %rbp, %rsp</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">popq %rbp</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">leaveq跟函数进入时的如下操作是对应的：</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">push   %rbp</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">mov    %rsp,%rbp</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">有些指令集也把上述的两条指令叫做enterq。</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">retq相当于：</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">popq %rip</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">而与retq对应的是callq，相当于：</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">pushq %rip</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">jmpq addr</font><font color="rgb(102, 102, 102)" face="????, Arial" size="3"><br align="start" size="3" style="letter-spacing: normal; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255)"/></font><font face="Microsoft YaHei" color="rgb(102, 102, 102)" size="3">这里也体现了call指令和jmp指令的区别：call指令会自动将返回地址压栈，而jmp指令不会，也就是说call指令执行完后会回来，而jmp后就不会回来了。</font>
+    </p>
+  </div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N69247&quot;)" id="imgN69247"/><a id="FMID_1718845131FM"/><div class="nodecontent">[?]</div><div class="content" id="N69247"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_404358871FM"/><div class="nodecontent">
+    <p>
+      294   4004fd:   48 83 ec 10             sub    $0x10,%rsp  //局部变量tmp 实际只需要4字节 分配了16字节 和优化有关  16字节对齐 [popexizhi: 这个不是  特别理解why 4个字节就ok?]
+    </p>
+    <p>
+      web中同样的swap解释中有如下1，这里和pope在linux编译后查看的结果中是没有这个的直接swap从di和si中将传入参数mv到 局部变量的相对地址了，这个是编译器的区别吗？ mark一下
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      080483b4 &lt;swap&gt;:
+    </p>
+    <p>
+       80483b4:       55                      push   %ebp            //ebp入栈
+    </p>
+    <p>
+       80483b5:       89 e5                   mov    %esp,%ebp       //esp值传给ebp
+    </p>
+    <p>
+       80483b7:       83 ec 10                <font size="3" color="#006666"><b>sub    $0x10,%esp      //局部变量tmp 实际只需要4字节 分配了16字节 和优化有关  16字节对齐 ----------------1</b></font>
+    </p>
+    <p>
+       80483ba:       8b 45 08                mov    0x8(%ebp),%eax  //取a的地址
+    </p>
+    <p>
+       80483bd:       8b 00                   mov    (%eax),%eax     //取a的值给eax
+    </p>
+    <p>
+       80483bf:       89 45 fc                mov    %eax,-0x4(%ebp) //a的值给tmp
+    </p>
+    <p>
+       80483c2:       8b 45 0c                mov    0xc(%ebp),%eax  //取b的地址
+    </p>
+    <p>
+       80483c5:       8b 10                   mov    (%eax),%edx     //
+    </p>
+    <p>
+       80483c7:       8b 45 08                mov    0x8(%ebp),%eax 
+    </p>
+    <p>
+       80483ca:       89 10                   mov    %edx,(%eax)
+    </p>
+    <p>
+       80483cc:       8b 45 0c                mov    0xc(%ebp),%eax
+    </p>
+    <p>
+       80483cf:       8b 55 fc                mov    -0x4(%ebp),%edx
+    </p>
+    <p>
+       80483d2:       89 10                   mov    %edx,(%eax)
+    </p>
+    <p>
+       80483d4:       c9                      leave                 //等同于 mov %ebp, %esp    pop %ebp
+    </p>
+    <p>
+       80483d5:       c3                      ret
+    </p>
+    <p>
+      ---------------------
+    </p>
+  </div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_114438688FM"/><div class="nodecontent">
+    <p>
+      [?] rbp 0x0~0x17做什么用?
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      -0000000000000020 ; Use data definition commands to create local variables and function arguments.
+    </p>
+    <p>
+      -0000000000000020 ; Two special fields " r" and " s" represent return address and saved registers.
+    </p>
+    <p>
+      -0000000000000020 ; Frame size: 20; Saved regs: 8; Purge: 0
+    </p>
+    <p>
+      ...
+    </p>
+    <p>
+      -0000000000000005                 db ? ; undefined
+    </p>
+    <p>
+      -0000000000000004 var_4           dd ?
+    </p>
+    <p>
+      +0000000000000000  s              db 8 dup(?)
+    </p>
+    <p>
+      +0000000000000008  r              db 8 dup(?)
+    </p>
+    <p>
+      +0000000000000010
+    </p>
+    <p>
+      +0000000000000010 ; end of stack variables
+    </p>
+  </div></div></div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N69396&quot;)" id="imgN69396"/><a id="FMID_1411649304FM"/><div class="nodecontent">这里可以测试这里的swap的代码，在linux编译运行查看asm</div><div class="content" id="N69396"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_609907377FM"/><div class="nodecontent">https://www.jianshu.com/p/594357dff57e</div></div></div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N69411&quot;)" id="imgN69411"/><a id="FMID_342565066FM"/><div class="nodecontent">read elf 逆向</div><div class="content" id="N69411"><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_225728599FM"/><div class="nodecontent"><a href="https://wizardforcel.gitbooks.io/re-for-beginners/content/Part-VI/Chapter-67.html">https://wizardforcel.gitbooks.io/re-for-beginners/content/Part-VI/Chapter-67.html</a> <a href="https://wizardforcel.gitbooks.io/re-for-beginners/content/Part-VI/Chapter-67.html"><img src="12.1.2EIPX.html_files/ilink.png" alt="User Link" style="border-width:0"/></a></div></div></div></div></div></div><div class="node"><img src="12.1.2EIPX.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_366373712FM"/><div class="nodecontent"/></div></div></div>
 </body></html>
