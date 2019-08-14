@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><!--This file has been created with freemind2html.xsl--><head><title>12.1.2- 6.KeUserModeCallback</title><link rel="stylesheet" href="12.1.2.6.KeUserModeCallback.html_files/freemind2html.css" type="text/css"/><meta name="generator" content="FreeMind-XSL Stylesheet (see: http://freemind-xsl.dev.slash-me.net/ for details)"/><script type="text/javascript" src="12.1.2.6.KeUserModeCallback.html_files/freemind2html.js">  
+	</script><script type="text/javascript"><!--
+          
+               function toggle(id)
+               {
+                   div_el = document.getElementById(id);
+                   img_el = document.getElementById('img'+id);
+                   if (div_el.style.display != 'none')
+                   {
+          
+					
+                      div_el.style.display='none';
+                      img_el.src = '12.1.2.6.KeUserModeCallback.html_files/show.png';
+          
+                   }
+                   else
+                   {
+          
+                      div_el.style.display='block';
+                      img_el.src = '12.1.2.6.KeUserModeCallback.html_files/hide.png';
+          
+                   };
+               };
+          
+          --></script></head><body><h1>12.1.2- 6.KeUserModeCallback</h1><div style="width:96%;  padding:2%;  margin-bottom:10px;  border: 0px;  text-align:center;  vertical-align:center;"><img src="12.1.2.6.KeUserModeCallback.html_files/image.png" style="margin-bottom:10px; &#9;border: 0px; &#9;text-align:center; &#9;vertical-align:center;" alt="Imagemap" usemap="#fm_imagemap"/></div><map name="fm_imagemap" id="fm_imagemap"><area shape="rect" href="#FMID_708272455FM" alt="12.1.2- 6.KeUserModeCallback" title="12.1.2- 6.KeUserModeCallback" coords="918,125,1119,169" /><area shape="rect" href="#FMID_126412639FM" alt="回调user32.dll!_clentLoadLibrary 加载dll" title="回调user32.dll!_clentLoadLibrary 加载dll" coords="1139,84,1371,106" /><area shape="rect" href="#FMID_922309225FM" alt="回调ShellCode" title="回调ShellCode" coords="1139,109,1233,131" /><area shape="rect" href="#FMID_532006618FM" alt="[next] 14/8/2019 
+
+ P478 - 12) 
+
+ pNewIn ..." title="[next] 14/8/2019 
+
+ P478 - 12) 
+
+ pNewIn ..." coords="1139,134,1518,210" /><area shape="rect" href="#FMID_1479334915FM" alt="other" title="other" coords="858,136,898,158" /><area shape="rect" href="#FMID_443206610FM" alt="[try] easySYS 0.3.0 对project 的使用和控制" title="[try] easySYS 0.3.0 对project 的使用和控制" coords="599,0,838,22" /><area shape="rect" href="#FMID_1715778513FM" alt="[list]" title="[list]" coords="804,149,838,171" /><area shape="rect" href="#FMID_57034320FM" alt="win32k.sys" title="win32k.sys" coords="691,25,784,47" /><area shape="rect" href="#FMID_602874558FM" alt="KeUserModeCallback" title="KeUserModeCallback" coords="632,62,784,84" /><area shape="rect" href="#FMID_262220504FM" alt="https://blog.csdn.net/whatday/article/de ..." title="https://blog.csdn.net/whatday/article/de ..." coords="307,50,612,72" /><area shape="rect" href="#FMID_176684033FM" alt="[popexizhi: 这篇中有详细的使用KeUserModeCallback的 ..." title="[popexizhi: 这篇中有详细的使用KeUserModeCallback的 ..." coords="0,75,612,97" /><area shape="rect" href="#FMID_1312577655FM" alt="user32.dll" title="user32.dll" coords="697,100,784,122" /><area shape="rect" href="#FMID_559180774FM" alt="NTSTATUS" title="NTSTATUS" coords="674,125,784,147" /><area shape="rect" href="#FMID_802950340FM" alt="RtlInitUnicodeString" title="RtlInitUnicodeString" coords="643,150,784,172" /><area shape="rect" href="#FMID_1063500740FM" alt="ALIGH_UP 与 参数 ULONG_PTR " title="ALIGH_UP 与 参数 ULONG_PTR " coords="571,175,784,197" /><area shape="rect" href="#FMID_1456443770FM" alt="FIELD_OFFSET" title="FIELD_OFFSET" coords="665,200,784,222" /><area shape="rect" href="#FMID_332508417FM" alt="wcscpy" title="wcscpy" coords="712,225,784,247" /><area shape="rect" href="#FMID_1644369716FM" alt="UNICODE_STRING" title="UNICODE_STRING" coords="664,262,784,284" /><area shape="rect" href="#FMID_320349370FM" alt="源码分析" title="源码分析" coords="584,250,644,272" /><area shape="rect" href="#FMID_165108029FM" alt="解释" title="解释" coords="608,275,644,297" /></map>
+
+<div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65543&quot;)" id="imgN65543"/><a id="FMID_708272455FM"/><div class="nodecontent">12.1.2- 6.KeUserModeCallback</div><div class="content" id="N65543"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_126412639FM"/><div class="nodecontent">回调user32.dll!_clentLoadLibrary 加载dll</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_922309225FM"/><div class="nodecontent">回调ShellCode</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_532006618FM"/><div class="nodecontent">
+    <p>
+      [next] 14/8/2019
+    </p>
+    <p>
+      P478 - 12)
+    </p>
+    <p>
+      pNewInfo-&gt;lpDLLPath.Buffer = (PWSTR)sizeof(USERHOOK_NEW);
+    </p>
+    <p>
+      
+    </p>
+  </div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65594&quot;)" id="imgN65594"/><a id="FMID_1479334915FM"/><div class="nodecontent">other</div><div class="content" id="N65594"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_443206610FM"/><div class="nodecontent">[try] easySYS 0.3.0 对project 的使用和控制</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65607&quot;)" id="imgN65607"/><a id="FMID_1715778513FM"/><div class="nodecontent">[list]</div><div class="content" id="N65607"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65613&quot;)" id="imgN65613"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <a id="FMID_57034320FM"/><div class="nodecontent">win32k.sys</div><div class="content" id="N65613"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_515374310FM"/><div class="nodecontent">https://blog.csdn.net/cqyczj/article/details/27796451</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65629&quot;)" id="imgN65629"/><a id="FMID_666816711FM"/><div class="nodecontent">检索</div><div class="content" id="N65629"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65635&quot;)" id="imgN65635"/><a id="FMID_1440681379FM"/><div class="nodecontent">子系统</div><div class="content" id="N65635"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65641&quot;)" id="imgN65641"/><a id="FMID_1052144384FM"/><div class="nodecontent">win32</div><div class="content" id="N65641"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65647&quot;)" id="imgN65647"/><a id="FMID_1963053586FM"/><div class="nodecontent">user层</div><div class="content" id="N65647"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65653&quot;)" id="imgN65653"/><a id="FMID_50762413FM"/><div class="nodecontent">csrss.exe</div><div class="content" id="N65653"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_299889783FM"/><div class="nodecontent">控制窗口</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1709203246FM"/><div class="nodecontent">创建/删除，进程，线程</div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_757651537FM"/><div class="nodecontent">dll</div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65679&quot;)" id="imgN65679"/><a id="FMID_200289694FM"/><div class="nodecontent">内核层</div><div class="content" id="N65679"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1709889256FM"/><div class="nodecontent">win32k.sys</div></div></div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_161487499FM"/><div class="nodecontent">POSIX</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1869645726FM"/><div class="nodecontent">OS/2</div></div></div></div></div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65708&quot;)" id="imgN65708"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <a id="FMID_602874558FM"/><div class="nodecontent">KeUserModeCallback</div><div class="content" id="N65708"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_262220504FM"/><div class="nodecontent">https://blog.csdn.net/whatday/article/details/11267699</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_176684033FM"/><div class="nodecontent">[popexizhi: 这篇中有详细的使用KeUserModeCallback的eg，可以参考user32.dll!_clentLoadLibrary的分析使用]</div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65730&quot;)" id="imgN65730"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <a id="FMID_1312577655FM"/><div class="nodecontent">user32.dll</div><div class="content" id="N65730"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65740&quot;)" id="imgN65740"/><a id="FMID_213308087FM"/><div class="nodecontent">GDI32.dll</div><div class="content" id="N65740"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_265509436FM"/><div class="nodecontent">包含的函数用来绘制图像和显示文字</div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65753&quot;)" id="imgN65753"/><a id="FMID_1368551650FM"/><div class="nodecontent">user32.dll</div><div class="content" id="N65753"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_245024936FM"/><div class="nodecontent">User32.dll提供创建和管理Windows图形界面的功能，例如桌面、视窗和功能表。里面的函数可以让应用程序创建及管理视窗、接收Windows消息（诸如用户的输入或系统的通知）、在视窗中显示文字，及显示一个消息视窗。  这个库里面大部分函数也需要倚靠Gdi32.dll提供的绘图功能，来对用户界面进行渲染。有些程序还会直接使用GDI函数，来对先前由User32.dll所创建的视窗进行底层绘图。</div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65766&quot;)" id="imgN65766"/><a id="FMID_296925946FM"/><div class="nodecontent">kernel32.dll</div><div class="content" id="N65766"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_702892706FM"/><div class="nodecontent">kernel32.dll是Windows 9x/Me中非常重要的32位动态链接库文件，属于内核级文件。它控制着系统的内存管理、数据的输入输出操作和中断处理，当Windows启动时，kernel32.dll就驻留在内存中特定的写保护区域，使别的程序无法占用这个内存区域。</div></div></div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65780&quot;)" id="imgN65780"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <img src="12.1.2.6.KeUserModeCallback.html_files/icons/full-2.png" alt="full-2"/> <a id="FMID_559180774FM"/><div class="nodecontent">NTSTATUS</div><div class="content" id="N65780"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_51077595FM"/><div class="nodecontent">https://baike.baidu.com/item/NTSTATUS</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_761370124FM"/><div class="nodecontent">
+    <p>
+      NTSTATUS 是被定义为32位的无符号长整型。在驱动程序开发中，人们习惯用 NTSTATUS 返回状态。其中0~0X7FFFFFFF，被认为是正确的状态，而0X80000000~0XFFFFFFFF被认为是错误的状态。
+    </p>
+    <p>
+      有一个非常有用的宏-----NT_SUCCESS，用来检测状态是否正确。
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65823&quot;)" id="imgN65823"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <a id="FMID_802950340FM"/><div class="nodecontent">RtlInitUnicodeString</div><div class="content" id="N65823"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_824879676FM"/><div class="nodecontent">
+    <p>
+      For more information, see the WdmlibRtlInitUnicodeStringEx function.
+    </p>
+    <p>
+      <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/wdm/nf-wdm-rtlinitunicodestring">https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/wdm/nf-wdm-rtlinitunicodestring</a>
+    </p>
+  </div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_789171723FM"/><div class="nodecontent">
+    <p>
+      The routine copies the SourceString pointer value to the Buffer member of the UNICODE_STRING structure pointed to by DestinationString. The Length member of this structure is set to the length, in bytes, of the source string, excluding the terminating null. The MaximumLength member of the structure is set to the length, in bytes, of the source string, including the terminating null. If SourceString is NULL, Length and MaximumLength are both set to zero.
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      WdmlibRtlInitUnicodeStringEx does not alter the source string pointed to by SourceString.
+    </p>
+    <p>
+      [popexizhi: 初始化UnicodeString使用的]
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65890&quot;)" id="imgN65890"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <a id="FMID_1063500740FM"/><div class="nodecontent">ALIGH_UP 与 参数 ULONG_PTR </div><div class="content" id="N65890"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1508213904FM"/><div class="nodecontent">https://www.boost.org/doc/libs/1_68_0/boost/align/align_up.hpp [内存补齐]</div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_547343215FM"/><div class="nodecontent">
+    <p>
+      http://www.myexception.cn/cpp/1476166.html
+    </p>
+    <p>
+      ULONG_PTR
+    </p>
+    <p>
+      ------解决方案--------------------
+    </p>
+    <p>
+      无符号（u） 长整型（long） 指针（ptr）
+    </p>
+    <p>
+      ------解决方案--------------------
+    </p>
+    <p>
+      引用:
+    </p>
+    <p>
+      1. ULONG_PTR 只是专门用于内核程序 (Kernel 或 Device Driver) 使用的数据类型，
+    </p>
+    <p>
+         当作指针时它应当指向系统内核地址空间 (因此最高位为 1)，另外它还可当作偏移量。
+    </p>
+    <p>
+      2.
+    </p>
+    <p>
+      定义：
+    </p>
+    <p>
+      ULONG_PTR
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Unsigned LONG_PTR.
+    </p>
+    <p>
+      This type is declared in Basetsd.h as follows:
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N65966&quot;)" id="imgN65966"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <a id="FMID_1456443770FM"/><div class="nodecontent">FIELD_OFFSET</div><div class="content" id="N65966"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_167694068FM"/><div class="nodecontent">
+    <p>
+      https://docs.microsoft.com/en-us/windows/win32/api/ntdef/nf-ntdef-field_offset
+    </p>
+    <p>
+      The FIELD_OFFSET macro returns the byte offset of a named field in a known structure type.
+    </p>
+    <p>
+      当前使用位置是在
+    </p>
+    <p>
+      pNewInfo-&gt;offCbkPtrs = FIELD_OFFSET(USERHOOK_NEW,offCbk);
+    </p>
+    <p>
+      在pNewInfo-&gt;offCbkPtrs 中存放 USERHOOK_NEW结构中的 offCbk偏移的地址
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66009&quot;)" id="imgN66009"/><img src="12.1.2.6.KeUserModeCallback.html_files/icons/button_ok.png" alt="button_ok"/> <a id="FMID_332508417FM"/><div class="nodecontent">wcscpy</div><div class="content" id="N66009"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1692336221FM"/><div class="nodecontent">
+    <p>
+      https://zh.cppreference.com/w/cpp/string/wide/wcscpy
+    </p>
+    <p>
+      定义于头文件 &lt;cwchar&gt;
+    </p>
+    <p>
+      wchar_t *wcscpy( wchar_t *dest, const wchar_t *src );
+    </p>
+    <p>
+      复制 src 所指向的宽字符串（包含空终止宽字符）到 dest 所指向的宽字符数组。
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      若字符串重叠，则行为未定义。
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      参数
+    </p>
+    <p>
+      dest - 指向复制来源的宽字符数组的指针
+    </p>
+    <p>
+      src - 指向复制来源的空终止宽字符串的指针
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      解释:
+    </p>
+    <p>
+      wcscpy((WCHAR*)((BYTE*)pOldInfo + sizeof(USERHOOK_OLD)),wDllPathToInject);
+    </p>
+    <p>
+      将wDllPathToinject拷贝到pOldInfo结构后面
+    </p>
+  </div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66079&quot;)" id="imgN66079"/><a id="FMID_1644369716FM"/><div class="nodecontent">UNICODE_STRING</div><div class="content" id="N66079"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66085&quot;)" id="imgN66085"/><a id="FMID_320349370FM"/><div class="nodecontent">源码分析</div><div class="content" id="N66085"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66092&quot;)" id="imgN66092"/><a id="FMID_1601182216FM"/><div class="nodecontent">
+    <p>
+      [源码]
+    </p>
+    <p>
+      pNewInfo-&gt;lpDLLPath.Length = usDllPath.Length;
+    </p>
+    <p>
+      pNewInfo-&gt;lpDLLPath.MaximumLength = usDllPath.MaximumLength;
+    </p>
+    <p>
+      pNewInfo-&gt;lpDLLPath.Buffer = (PWSTR)sizeof(USERHOOK_NEW);
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      这里的
+    </p>
+    <p>
+      lpDLLPath定义为
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      typedef struct _USERHOOK_NEW
+    </p>
+    <p>
+      {
+    </p>
+    <p>
+      ...
+    </p>
+    <p>
+      /*off=0x18_28*/UNICODE_STRING lpDLLPath; //Dll路径,Buffer可能需要修正
+    </p>
+    <p>
+      ...
+    </p>
+    <p>
+      } USERHOOK_NEW;
+    </p>
+    <p>
+      这里是？什么方式初始化？
+    </p>
+    <p>
+      [popexizhi]
+    </p>
+    <p>
+      这里Unicode_string的定义中 Length和MaximumLength可以解释
+    </p>
+    <p>
+      但是Buffer 的处理(PWSTR)sizeof(USERHOOK_NEW); 不明白
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      下文中给的三个例子:
+    </p>
+  </div><div class="content" id="N66092"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66168&quot;)" id="imgN66168"/><a id="FMID_431349136FM"/><div class="nodecontent">
+    <p>
+      list:
+    </p>
+    <p>
+      1.三个例子的中问题分别go
+    </p>
+    <p>
+      2.如何区分堆上和栈上的初始化
+    </p>
+    <p>
+      3.当前方式是什么方式的初始化，这里的buffer指向很奇怪啊？
+    </p>
+  </div><div class="content" id="N66168"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66196&quot;)" id="imgN66196"/><a id="FMID_319579357FM"/><div class="nodecontent">1.三个例子</div><div class="content" id="N66196"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1359090803FM"/><div class="nodecontent">
+    <p>
+      初始化UNICODE_STRING的三种方式
+    </p>
+    <p>
+      字符串常量
+    </p>
+    <p>
+      UNICODE_STRING uStrTest1 = {0};
+    </p>
+    <p>
+      WCHAR *szHello = L"Hello world";
+    </p>
+    <p>
+      uStrTest1.Length = wcslen(szHello) * sizeof(WCHAR);
+    </p>
+    <p>
+      uStrTest1.MaximumLength = (wcslen(szHello) + 1) * sizeof(WCHAR);
+    </p>
+    <p>
+      RtlInitUnicodeString(&amp;uStrTest1,szHello);
+    </p>
+    <p>
+      // 等价于 char *str = "hello world";
+    </p>
+    <p>
+      // uStrTest1.Buffer指向的地址是静态常量区,所以对着uStrTest1进行修改操作必错
+    </p>
+    <p>
+      [next: RtlInitUnicodeString https://blog.csdn.net/zfs2008zfs/article/details/51126906 ]
+    </p>
+    <p>
+      [next]
+    </p>
+    <p>
+      try: 此位置的Buffer的赋值方式，应该可以使用，试试，也许
+    </p>
+  </div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_501285459FM"/><div class="nodecontent">
+    <p>
+      在栈上为Buffer初始化
+    </p>
+    <p>
+      UNICODE_STRING uStrTest2 = {0};
+    </p>
+    <p>
+      WCHAR szHello2[512] = L"Hello world";
+    </p>
+    <p>
+      uStrTest2.Buffer = szHello2;
+    </p>
+    <p>
+      uStrTest2.Length = wcslen(L"Hello world") * sizeof(WCHAR);
+    </p>
+    <p>
+      uStrTest2.MaximumLength = sizeof(szHello2);
+    </p>
+  </div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1618132531FM"/><div class="nodecontent">
+    <p>
+      在堆上为Buffer初始化
+    </p>
+    <p>
+      UNICODE_STRING uStrTest3 = {0};
+    </p>
+    <p>
+      ULONG ulLength = (wcslen(L"Hello world") * sizeof(WCHAR));
+    </p>
+    <p>
+      // 为Buffer在堆上分配一块内存
+    </p>
+    <p>
+      // MAX_PATH : 代表Windows系统中文件路径的最大长度.值是260
+    </p>
+    <p>
+      uStrTest3.Buffer = ExAllocatePoolWithTag(PagedPool,MAX_PATH * sizeof(WCHAR),'POCU');
+    </p>
+    <p>
+      // 判断内存是否分配成功
+    </p>
+    <p>
+      if (uStrTest3.Buffer == NULL)
+    </p>
+    <p>
+      {
+    </p>
+    <p>
+          return;
+    </p>
+    <p>
+      }
+    </p>
+    <p>
+      // 为分配到的内存初始化
+    </p>
+    <p>
+      RtlZeroMemory(uStrTest3.Buffer,MAX_PATH * sizeof(WCHAR));
+    </p>
+    <p>
+      memcpy(uStrTest3.Buffer,L"Hello world",ulLength);
+    </p>
+    <p>
+      uStrTest3.Length = ulLength;
+    </p>
+    <p>
+      uStrTest3.MaximumLength = MAX_PATH * sizeof(WCHAR);
+    </p>
+  </div></div></div></div></div></div></div></div></div></div><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/hide.png" class="hideshow" alt="hide" onClick="toggle(&quot;N66359&quot;)" id="imgN66359"/><a id="FMID_165108029FM"/><div class="nodecontent">解释</div><div class="content" id="N66359"><div class="node"><img src="12.1.2.6.KeUserModeCallback.html_files/leaf.png" class="hideshow" alt="leaf"/><a id="FMID_1496401263FM"/><div class="nodecontent">
+    <p>
+      https://www.jianshu.com/p/1c463ff9d554
+    </p>
+    <p>
+      1.内核的Unicode编码 使用
+    </p>
+    <p>
+      unicode_string
+    </p>
+    <p>
+      2.结构定义
+    </p>
+    <p>
+      UNICODE_STRING 定义(definition) :
+    </p>
+    <p>
+          typedef struct _UNICODE_STRING{
+    </p>
+    <p>
+                   USHORT LENGTH;        // 字节数,不是字符数,有效数据的字节数
+    </p>
+    <p>
+                   USHORT MaximumLength;       // 字节数,告诉系统函数最多有多少内存可用
+    </p>
+    <p>
+                                               // 最大可表示32767个字符
+    </p>
+    <p>
+                   PWSTR Buffer;        // 指针, 非零结尾,中间也可能含有零
+    </p>
+    <p>
+          }UNICODE_STRING,*PUNICODE_STRING; 
+    </p>
+    <p>
+          // 因为Buffer不是以零结尾,所以用wcscpt / wcscmp等操作字符串
+    </p>
+    <p>
+          // 的处理Buffer中的值是不可靠的,因为这些函数是以字符串末尾字   
+    </p>
+    <p>
+          // 符'\0'为结尾来处理字符串的.**
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      3.初始化方式（字符串/在栈上为bufffer初始化/在堆上为Buffer初始化）
+    </p>
+  </div></div></div></div></div></div></div></div></div></div></div></div>
+</body></html>

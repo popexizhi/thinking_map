@@ -1,3 +1,6 @@
+# thinking_map_url
+https://popexizhi.github.io/thinking_map/
+
 # thinking_map
 读书笔记的FreeMid图形，这个导出在blog中无法直接使用,备份一下吧:)
 
